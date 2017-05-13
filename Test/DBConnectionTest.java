@@ -1,7 +1,19 @@
 package Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-/**
- * Created by atee on 2017.05.13..
- */
 public class DBConnectionTest {
+
+    @Test
+    public void test() {
+        DBConnection dbCon = DBConnection.getInstance();
+        if(dbCon != null)
+        {
+            System.out.println("Conecction to DB is ok");
+        }
+        else{
+            fail("Can not connect to the DB");
+        }
+    }
+
 }
