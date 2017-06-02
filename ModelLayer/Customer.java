@@ -3,10 +3,12 @@ package ModelLayer;
 public class Customer extends Person {
 	private int cId;
 
-	public Customer(String fName, String lName, String email, String address, int id, int phone, int bDay, int cId) {
-		super(fName, lName, email, address, id, phone, bDay);
+	public Customer(String fName,String lName,String email,String address,int phone,int bDay,int cId) {
+		super(fName, lName, email, address, phone, bDay);
 		this.cId = cId;
 	}
+
+	public Customer() {}
 
 	public int getcId() {
 		return cId;
@@ -15,4 +17,5 @@ public class Customer extends Person {
 	public void setcId(int cId) {
 		this.cId = cId;
 	}
+
 }

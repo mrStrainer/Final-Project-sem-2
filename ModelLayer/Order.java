@@ -8,34 +8,12 @@ public class Order {
 	private Person Person;
 
 	public Order() {
-		this.orders = new ArrayList<OrderLine>();
-		this.totalPrice = 0;
-	}
-	public void addOrderLine (OrderLine orderLine) {
-		orders.add(orderLine);
 	}
 
-	public ArrayList<OrderLine> getOrders() {
-		return orders;
+	public Order(ArrayList<OrderLine> orders, int totalPrice, Person Person) {
+		// this.totalPrice =
+		orders = new ArrayList<OrderLine>();
+		// TODO Person stuff
 	}
 
-	public void setOrders(ArrayList<OrderLine> orders) {
-		this.orders = orders;
-	}
-
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	public Person getPerson() {
-		return Person;
-	}
-
-	public void setPerson(Person person) {
-		Person = person;
-	}
 }

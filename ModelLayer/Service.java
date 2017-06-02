@@ -7,18 +7,22 @@ public class Service {
 	private String description;
 	private boolean status;
 
+	public Service() {
+	}
+
 	public Service(int sId, int price, String description, boolean status) {
 		this.sId = sId;
 		this.price = price;
 		this.description = description;
 		this.status = status;
+
 	}
 
-	public int getsId() {
+	public int getSId() {
 		return sId;
 	}
 
-	public void setsId(int sId) {
+	public void setSId(int sId) {
 		this.sId = sId;
 	}
 
@@ -38,11 +42,12 @@ public class Service {
 		this.description = description;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
 }

@@ -11,19 +11,15 @@ public class OrderLine {
 	private ArrayList<Service> services;
 	private ArrayList<Item> items;
 
-	public OrderLine(int orderLineId, int price, int amount, boolean isService) {
+	public OrderLine() {
+	}
+
+	public OrderLine(int orderLineId, Item Item, int price, int amount, boolean isService) {
 		this.orderLineId = orderLineId;
 		this.price = price;
 		this.amount = amount;
 		this.isService = isService;
-	}
-
-	public void addService(Service service) {
-		services.add(service);
-	}
-
-	public void addItem(Item item) {
-		items.add(item);
+		price = 0;
 	}
 
 	public int getOrderLineId() {
@@ -54,23 +50,8 @@ public class OrderLine {
 		return isService;
 	}
 
-	public void setService(boolean service) {
-		isService = service;
+	public void setService(boolean isService) {
+		this.isService = isService;
 	}
 
-	public ArrayList<Service> getServices() {
-		return services;
-	}
-
-	public void setServices(ArrayList<Service> services) {
-		this.services = services;
-	}
-
-	public ArrayList<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(ArrayList<Item> items) {
-		this.items = items;
-	}
 }
