@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBCustomer 
+public class DBCustomer implements IFDBCustomer
 {
 	private Connection con;
 	

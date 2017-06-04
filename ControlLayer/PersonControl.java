@@ -26,7 +26,7 @@ public class PersonControl
             DBConnection.commitTransaction();
         } catch (Exception e) {
             DBConnection.rollbackTransaction();
-            throw new Exception("Person not inserted");
+            throw new Exception("Customer not inserted");
         }
     }
 	
@@ -47,7 +47,7 @@ public class PersonControl
             DBConnection.commitTransaction();
         } catch (Exception e) {
             DBConnection.rollbackTransaction();
-            throw new Exception("Person not inserted");
+            throw new Exception("Supplier not inserted");
         }
     }
 	
@@ -68,7 +68,7 @@ public class PersonControl
             DBConnection.commitTransaction();
         } catch (Exception e) {
             DBConnection.rollbackTransaction();
-            throw new Exception("Person not inserted");
+            throw new Exception("Employee not inserted");
         }
     }
 	
@@ -77,10 +77,26 @@ public class PersonControl
         return dbPerson.findPerson(id,true);
     }
 	
-	public Person DeletePerson (int id) {
+	public Person DeleteCustomer (int id) {
+        IFDBCustomer ifdbCustomer = new DBCustomer();
+        return ifdbCustomer.delete(id);
+    }
+
+    public Person DeleteSupplier (int id) {
+        IFDBSupplier ifdbSupplier = new DBSupplier();
+        return ifdbSupplier.delete(id);
+    }
+
+    public Person DeleteEmployee (int id) {
+        IFDBEmployee ifdbEmployee = new DBEmployee();
+        return ifdbEmployee.delete(id);
+    }/*
+    inserting and deleting a customer/employee/supplier should do the insertion / deletion of the corresponding person as well
+
+    public Person DeletePerson (int id) {
         IFDBPerson dbPerson = new DBPerson();
         return dbPerson.delete(id);
-    }
+    }*/
 	
 	public ArrayList<Person> findAllPersons()
     {

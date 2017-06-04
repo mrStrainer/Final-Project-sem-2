@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBPerson 
+public class DBPerson implements IFDBPerson
 {
 	private Connection con;
 	
@@ -12,4 +12,5 @@ public class DBPerson
 	{
 		con = DBConnection.getInstance().getDBcon();
 	}
+
 }

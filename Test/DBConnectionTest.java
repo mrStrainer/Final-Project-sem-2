@@ -1,6 +1,8 @@
 package Test;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
+import DBLayer.DBConnection;
 
 public class DBConnectionTest {
 
