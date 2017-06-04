@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBItem
+public class DBItem implements IFDBItem
 {
 	private Connection con;
 	

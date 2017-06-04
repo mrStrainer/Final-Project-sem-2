@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBOther 
+public class DBOther implements IFDBOther
 {
 	private Connection con;
 	

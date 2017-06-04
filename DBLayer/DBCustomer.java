@@ -12,4 +12,5 @@ public class DBCustomer implements IFDBCustomer
 	{
 		con = DBConnection.getInstance().getDBcon();
 	}
+
 }

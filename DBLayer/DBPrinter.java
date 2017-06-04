@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBPrinter 
+public class DBPrinter implements IFDBPrinter
 {
 	private Connection con;
 	

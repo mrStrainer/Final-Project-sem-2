@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBPhone 
+public class DBPhone implements IFDBPhone
 {
 	private Connection con;
 	

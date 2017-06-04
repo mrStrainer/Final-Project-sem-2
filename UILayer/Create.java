@@ -49,7 +49,7 @@ public class Create extends JFrame
 	private JButton btnCustomer;
 	private JButton btnEmployee;
 	private JButton btnSupplier;
-	
+	private PersonControl PCO = new PersonControl();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -398,15 +398,44 @@ public class Create extends JFrame
 		btnCustomer.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCustomer.setBounds(1000, 100, 200, 50);
 		panelPerson.add(btnCustomer);
+		btnCustomer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					PCO.insertCustomer(lblFirstName.getText(), lblLastName.getText(),lblEmail.getText(), lblAddress.getText(), Integer.parseInt(lblPhone.getText()), Integer.parseInt(lblBirthDate.getText()));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		btnEmployee = new JButton("Employee");
 		btnEmployee.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEmployee.setBounds(1000, 250, 200, 50);
 		panelPerson.add(btnEmployee);
-		
+		btnEmployee.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					PCO.insertEmployee(lblFirstName.getText(), lblLastName.getText(),lblEmail.getText(), lblAddress.getText(), Integer.parseInt(lblPhone.getText()), Integer.parseInt(lblBirthDate.getText()));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnSupplier = new JButton("Supplier");
 		btnSupplier.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSupplier.setBounds(1000, 400, 200, 50);
 		panelPerson.add(btnSupplier);
+		btnSupplier.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					PCO.insertSupplier(lblFirstName.getText(), lblLastName.getText(),lblEmail.getText(), lblAddress.getText(), Integer.parseInt(lblPhone.getText()), Integer.parseInt(lblBirthDate.getText()));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 }

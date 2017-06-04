@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBOrder 
+public class DBOrder implements IFDBOrder
 {
 	private Connection con;
 	

@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBCopier 
+public class DBCopier implements IFDBCopier
 {
 	private Connection con;
 	

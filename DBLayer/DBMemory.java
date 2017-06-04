@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.*;
 
-public class DBMemory 
+public class DBMemory implements IFDBMemory
 {
 	private Connection con;
 	
