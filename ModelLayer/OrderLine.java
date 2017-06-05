@@ -1,5 +1,6 @@
 package ModelLayer;
 
+import java.util.ArrayList;
 
 public class OrderLine {
 
@@ -13,21 +14,12 @@ public class OrderLine {
 	public OrderLine() {
 	}
 
-	public OrderLine(int orderLineId, Item item, int price, int amount) {
+	public OrderLine(int orderLineId, Item Item, int price, int amount, boolean isService) {
 		this.orderLineId = orderLineId;
 		this.price = price;
 		this.amount = amount;
-		this.isService = false;
-		this.item = item;
-		this.price = price*amount;
-	}
-	public OrderLine(int orderLineId, Service service, int price) {
-		this.orderLineId = orderLineId;
-		this.price = price;
-		this.amount = 1;
-		this.isService = true;
-		this.service = service;
-		this.price = price;
+		this.isService = isService;
+		price = 0;
 	}
 
 	public int getOrderLineId() {

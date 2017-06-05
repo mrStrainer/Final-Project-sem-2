@@ -1,10 +1,8 @@
 package DBLayer;
-
 import ModelLayer.*;
 import java.sql.*;
-import java.util.*;
-
-public class DBSupplier implements IFDBSupplier
+//name, price, salePrice, stock, brand, description, 
+public class DBSupplier
 {
 	private Connection con;
 	
@@ -12,4 +10,27 @@ public class DBSupplier implements IFDBSupplier
 	{
 		con = DBConnection.getInstance().getDBcon();
 	}
+	
+	public int insertSupplier(Supplier supplier) throws Exception
+	{  
+		int rc = -1;
+		String query="INSERT INTO Supplier(sId) VALUES('"+
+				supplier.getsId()  +"'";
+		
+		System.out.println("insert : " + query);
+		try
+		{
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			rc = stmt.executeUpdate(query);
+			stmt.close();
+		}
+		catch(SQLException ex)
+		{
+			System.out.println("Supplier not Created");
+			throw new Exception ("Supplier is not inserted correctly");
+		}
+		return(rc);
+	}
+	
 }

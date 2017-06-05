@@ -1,10 +1,8 @@
 package DBLayer;
-
 import ModelLayer.*;
 import java.sql.*;
-import java.util.*;
-
-public class DBPhone implements IFDBPhone
+//name, price, salePrice, stock, brand, description, 
+public class DBPhone
 {
 	private Connection con;
 	
@@ -12,4 +10,36 @@ public class DBPhone implements IFDBPhone
 	{
 		con = DBConnection.getInstance().getDBcon();
 	}
+	
+	public int insertPhone(Phone phone) throws Exception
+	{  
+		int rc = -1;
+		String query="INSERT INTO Phone(scSize, RAM, phoneId) VALUES('"+
+				phone.getScSize()  + "','"  +
+				phone.getRAM()  + "','"  +
+				phone.getId()  +"'";
+		
+		System.out.println("insert : " + query);
+		try
+		{
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			rc = stmt.executeUpdate(query);
+			stmt.close();
+		}
+		catch(SQLException ex)
+		{
+			System.out.println("Phone not Created");
+			throw new Exception ("Phone is not inserted correctly");
+		}
+		return(rc);
+	}
+	
+	public int getPhoneID()
+	{
+		int i;
+		
+		return i;
+	}
+	
 }

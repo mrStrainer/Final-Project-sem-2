@@ -3,16 +3,13 @@ package ModelLayer;
 public class Memory extends Item
 {
 	private int mId;
-	private int size;
-	private String type;
-	public Memory(String name, int price, int salePrice, int stock, String brand, String description, int mId, int size, String type)
+	private String type, size;
+	public Memory(String name, int price, int salePrice, int stock, String brand, String description, int mId)
 	{
 		super(name, price, salePrice, stock, brand, description);
 		this.mId = mId;
-		this.size = size;
-		this.type = type;
 	}
-
+	
 	public void setId(int id)
 	{
 		mId = id;
@@ -22,28 +19,22 @@ public class Memory extends Item
 	{
 		return mId;
 	}
-
-	public int getmId() {
-		return mId;
+	
+	public void setType(String type)
+	{
+		this.type = type;
 	}
-
-	public void setmId(int mId) {
-		this.mId = mId;
-	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
+	public void setSize(String size)
+	{
 		this.size = size;
 	}
-
-	public String getType() {
+	
+	public String getType()
+	{
 		return type;
 	}
-
-	public void setType(String type) {
-		this.type = type;
+	public String getSize()
+	{
+		return size;
 	}
 }

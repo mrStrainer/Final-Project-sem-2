@@ -1,10 +1,8 @@
 package DBLayer;
-
 import ModelLayer.*;
 import java.sql.*;
-import java.util.*;
-
-public class DBEmployee implements IFDBEmployee
+//name, price, salePrice, stock, brand, description, 
+public class DBEmployee
 {
 	private Connection con;
 	
@@ -12,6 +10,27 @@ public class DBEmployee implements IFDBEmployee
 	{
 		con = DBConnection.getInstance().getDBcon();
 	}
-
-
+	
+	public int insertEmployee(Employee employee) throws Exception
+	{  
+		int rc = -1;
+		String query="INSERT INTO Employee(eId) VALUES('"+
+				employee.geteId()  +"'";
+		
+		System.out.println("insert : " + query);
+		try
+		{
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			rc = stmt.executeUpdate(query);
+			stmt.close();
+		}
+		catch(SQLException ex)
+		{
+			System.out.println("Employee not Created");
+			throw new Exception ("Employee is not inserted correctly");
+		}
+		return(rc);
+	}
+	
 }

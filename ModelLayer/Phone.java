@@ -3,48 +3,40 @@ package ModelLayer;
 public class Phone extends Item
 {
 	private int phoneId;
-	private String ram;
-	private String scrSize;
+	private String scSize, RAM
 	
-	public Phone(String name, int price, int salePrice, int stock, String brand, String description, int phoneId, String ram, String scrSize)
+	public Phone(){}
+	
+	public Phone(String name, int price, int salePrice, int stock, String brand, String description, String scSize, String RAM)
 	{
 		super(name, price, salePrice, stock, brand, description);
-		this.phoneId = phoneId;
-		this.ram = ram;
-		this.scrSize = scrSize;
+		this.scSize=scSize;
+		this.RAM=RAM;
 	}
 	
 	public void setId(int id)
 	{
 		phoneId = id;
 	}
+	public void setScSize(String scSize)
+	{
+		this.scSize=scSize;
+	}
+	public void setRAM(String RAM)
+	{
+		this.RAM=RAM;
+	}
 	
 	public int getId()
 	{
 		return phoneId;
 	}
-
-	public int getPhoneId() {
-		return phoneId;
+	public String getScSize()
+	{
+		return scSize;
 	}
-
-	public void setPhoneId(int phoneId) {
-		this.phoneId = phoneId;
-	}
-
-	public String getRam() {
-		return ram;
-	}
-
-	public void setRam(String ram) {
-		this.ram = ram;
-	}
-
-	public String getScrSize() {
-		return scrSize;
-	}
-
-	public void setScrSize(String scrSize) {
-		this.scrSize = scrSize;
+	public String getRAM()
+	{
+		return RAM;
 	}
 }
