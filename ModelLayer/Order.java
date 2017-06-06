@@ -27,5 +27,24 @@ public class Order {
 		}
 		return totalPrice;
 	}
-	
+
+	public ArrayList<OrderLine> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(ArrayList<OrderLine> orders) {
+		this.orders = orders;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
 }
