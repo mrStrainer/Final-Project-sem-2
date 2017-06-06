@@ -1,25 +1,19 @@
 package ModelLayer;
 
-public class PhotoAlbum 
-{
-	private static int phCount = 0;
+public class PhotoAlbum extends OrderLine {
 	private int picAmount, price;
 	private String size;
 	private String pType;
 	private String cType;
-	private int phId;
-	
-	public PhotoAlbum(){}
-	
+
 	public PhotoAlbum(int picAmount, int price, String size, String paperType, String coverType)
 	{
+		super(price,1);
 		this.picAmount = picAmount;
 		this.price = price;
 		this.size = size;
 		this.pType = paperType;
 		this.cType = coverType;
-		phCount++;
-		this.phId = phCount;
 	}
 	
 	public void setPicAmount(int picAmount)
@@ -64,11 +58,4 @@ public class PhotoAlbum
 		this.cType = cType;
 	}
 
-	public int getId() {
-		return phId;
-	}
-
-	public void setId(int phId) {
-		this.phId = phId;
-	}
 }

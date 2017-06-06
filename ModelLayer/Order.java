@@ -15,16 +15,15 @@ public class Order {
 
 	public void addOrderLine(OrderLine orderLine) {
 		orders.add(orderLine);
+		totalPrice +=orderLine.getPrice();
+	}
+	public void removeOrderLine(OrderLine orderLine) {
+		orders.remove(orderLine);
+		totalPrice -= orderLine.getPrice();
 	}
 
 	public int getTotalPrice()
 	{
-		int i;
-		for(OrderLine o : orders)
-		{
-			i = o.getPrice();
-			totalPrice += i;
-		}
 		return totalPrice;
 	}
 

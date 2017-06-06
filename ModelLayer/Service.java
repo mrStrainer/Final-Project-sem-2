@@ -1,29 +1,17 @@
 package ModelLayer;
 
-public class Service {
-	private static int serviceCount = 0;
-	private int price;
+public class Service extends OrderLine{
 	private String description;
 	private boolean status;
-	private int serviceId;
+	private String location;
+	private String startDate;
 
-	public Service() {
-	}
-
-	public Service(int sId, int price, String description, boolean status) {
-		this.price = price;
+	public Service(int price, String description, boolean status, String location, String startDate) {
+		super(price,1);
 		this.description = description;
 		this.status = status;
-		serviceCount++;
-		this.serviceId=serviceCount;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
+		this.location = location;
+		this.startDate = startDate;
 	}
 
 	public String getDescription() {
@@ -42,11 +30,4 @@ public class Service {
 		this.status = status;
 	}
 
-	public int getId() {
-		return serviceId;
-	}
-
-	public void setId(int serviceId) {
-		this.serviceId = serviceId;
-	}
 }

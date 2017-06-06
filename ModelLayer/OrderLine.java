@@ -7,18 +7,20 @@ public class OrderLine {
 	private int orderLineId;
 	private int price;
 	private int amount;
-	private boolean isService;
-	private Service service;
-	private Item item;
 
 	public OrderLine() {
 	}
 
-	public OrderLine(Item item, int price, int amount, boolean isService) {
-		this.item = item;
-		this.price = price;
+	public OrderLine(int price, int amount) {
 		this.amount = amount;
-		this.isService = isService;
+		this.price = price;
+
+		orderLineCount++;
+		this.orderLineId = orderLineCount;
+	}
+	public OrderLine(int amount) {
+		this.amount = amount;
+
 		orderLineCount++;
 		this.orderLineId = orderLineCount;
 	}
@@ -31,21 +33,6 @@ public class OrderLine {
 		this.orderLineId = orderLineId;
 	}
 
-	public Service getService() {
-		return service;
-	}
-
-	public void setService(Service service) {
-		this.service = service;
-	}
-
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
 
 	public int getPrice() {
 		return price;
@@ -63,13 +50,6 @@ public class OrderLine {
 		this.amount = amount;
 	}
 
-	public boolean isService() {
-		return isService;
-	}
-
-	public void setService(boolean isService) {
-		this.isService = isService;
-	}
 
 
 }

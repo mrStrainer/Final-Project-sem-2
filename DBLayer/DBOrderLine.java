@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBOrderLine implements IFDBPerson
+public class DBOrderLine implements IFDBOrderLine
 {
 	private Connection con;
 	
