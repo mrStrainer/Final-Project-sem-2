@@ -106,7 +106,7 @@ public class Create extends JFrame
 
 		txtSalePrice = new JTextField();
 		txtPrice.setBounds(200, 230, 300, 40);
-		panelItem.add(txtPrice);
+		panelItem.add(txtSalePrice);
 		txtPrice.setColumns(10);
 
 		txtStock = new JTextField();
