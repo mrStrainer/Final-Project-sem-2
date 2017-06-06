@@ -1,7 +1,13 @@
 package ModelLayer;
 
-/**
- * Created by atee on 2017.06.06..
- */
-public class MinusPercentStrategy {
+import ModelLayer.*;
+
+public class Minus10PercentStrategy
+{
+	private double i
+	public double getTotal(OrderLine ol, int threshold)
+	{
+		i=((ol.getPrice()*threshold)/100);
+		return i;
+	}
 }
