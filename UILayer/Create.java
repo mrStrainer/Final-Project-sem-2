@@ -288,6 +288,17 @@ public class Create extends JFrame
 		panelItem.add(btnCopier);
 		
 		btnOther = new JButton("Other");
+		btnOther.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = txtName.getText();
+				String brand = txtBrand.getText();
+				String price= txtPrice.getText();
+				String stock = txtStock.getText();
+				String description = textField.getText();
+				String id = textField_2.getText();
+				ItemControl.insertOther(name,brand,price,stock,description,id);
+			}
+		});
 		btnOther.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnOther.setBounds(150, 400, 150, 50);
 		panelItem.add(btnOther);
