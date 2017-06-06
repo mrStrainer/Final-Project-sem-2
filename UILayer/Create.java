@@ -16,6 +16,7 @@ public class Create extends JFrame
 	private JPanel panelChoose;
 	private JTextField txtBrand;
 	private JTextField txtPrice;
+	private JTextField txtSalePrice;
 	private JTextField txtStock;
 	private JTextField txtName;
 	private JTextField textField;
@@ -50,6 +51,7 @@ public class Create extends JFrame
 	private JButton btnEmployee;
 	private JButton btnSupplier;
 	private PersonControl PCO = new PersonControl();
+	private ItemControl ICO = new ItemControl();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -101,9 +103,14 @@ public class Create extends JFrame
 		txtPrice.setBounds(200, 170, 300, 40);
 		panelItem.add(txtPrice);
 		txtPrice.setColumns(10);
-		
+
+		txtSalePrice = new JTextField();
+		txtPrice.setBounds(200, 230, 300, 40);
+		panelItem.add(txtPrice);
+		txtPrice.setColumns(10);
+
 		txtStock = new JTextField();
-		txtStock.setBounds(200, 230, 300, 40);
+		txtStock.setBounds(200, 290, 300, 40);
 		panelItem.add(txtStock);
 		txtStock.setColumns(10);
 		
@@ -126,15 +133,20 @@ public class Create extends JFrame
 		lblPrice.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblPrice.setBounds(50, 170, 100, 30);
 		panelItem.add(lblPrice);
+
+		JLabel lblSalePrice = new JLabel("Sale Price");
+		lblSalePrice.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblSalePrice.setBounds(50, 230, 100, 30);
+		panelItem.add(lblSalePrice);
 		
 		JLabel lblStock = new JLabel("Stock");
 		lblStock.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblStock.setBounds(50, 230, 100, 30);
+		lblStock.setBounds(50, 290, 100, 30);
 		panelItem.add(lblStock);
 		
 		JLabel lblDescription = new JLabel("Description");
 		lblDescription.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblDescription.setBounds(50, 290, 100, 30);
+		lblDescription.setBounds(50, 350, 100, 30);
 		panelItem.add(lblDescription);
 		
 		btnCancel_2 = new JButton("CANCEL");
@@ -293,10 +305,15 @@ public class Create extends JFrame
 				String name = txtName.getText();
 				String brand = txtBrand.getText();
 				String price= txtPrice.getText();
+				String salePrice= txtSalePrice.getText();
 				String stock = txtStock.getText();
 				String description = textField.getText();
 				String id = textField_2.getText();
-				ItemControl.insertOther(name,brand,price,stock,description,id);
+				try {
+					ICO.insertOther(name,Integer.parseInt(price),Integer.parseInt(salePrice),Integer.parseInt(stock),brand,description,Integer.parseInt(id));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnOther.setFont(new Font("Tahoma", Font.PLAIN, 20));
