@@ -10,7 +10,7 @@ public class Copier extends Item
 	public Copier(String name, int price, int salePrice, int stock, String brand, String description, int copyId)
 	{
 		super(name, price, salePrice, stock, brand, description);
-		this.copyId = copyId;
+		this.copyId = super.getID();
 	}
 	
 	public void setId(int id)

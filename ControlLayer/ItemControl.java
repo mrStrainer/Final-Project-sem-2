@@ -38,6 +38,8 @@ public class ItemControl
 
 	public void insertCopier(String name, int price, int salePrice, int stock, String brand, String description, int copyId, String type, String speed) throws Exception {
         Copier copier = new Copier(name, price, salePrice, stock, brand, description, copyId, type, speed);
+        copier.getId()
+
         try {
             DBConnection.startTransaction();
             DBCopier dbCopier = new DBCopier();

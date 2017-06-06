@@ -3,7 +3,7 @@ package ModelLayer;
 public class Phone extends Item
 {
 	private int phoneId;
-	private String scSize, RAM
+	private String scSize, RAM;
 	
 	public Phone(){}
 	

@@ -3,6 +3,7 @@ package ModelLayer;
 public class Item {
 	private int price, salePrice, stock;
 	private String name, brand, description;
+	private static int ID  =0;
 
 	public Item() {
 	}
@@ -14,6 +15,7 @@ public class Item {
 		this.stock = stock;
 		this.brand = brand;
 		this.description = description;
+		this.ID++;
 	}
 
 	public void setName(String name) {
@@ -62,5 +64,13 @@ public class Item {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public static int getID() {
+		return ID;
+	}
+
+	public static void setID(int ID) {
+		Item.ID = ID;
 	}
 }
