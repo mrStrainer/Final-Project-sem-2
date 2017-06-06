@@ -36,4 +36,24 @@ public class Calendar
 	{
 		return pas;
 	}
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+
+	public List<PhotoAlbum> getPas() {
+		return pas;
+	}
+
+	public void setPas(List<PhotoAlbum> pas) {
+		this.pas = pas;
+	}
+
+	public int getId() {
+		return calendarId;
+	}
+
+	public void setId(int calendarId) {
+		this.calendarId = calendarId;
+	}
 }

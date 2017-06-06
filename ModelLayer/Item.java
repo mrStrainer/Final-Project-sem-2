@@ -15,7 +15,6 @@ public class Item {
 		this.stock = stock;
 		this.brand = brand;
 		this.description = description;
-
 		count++;
 		this.id =count;
 	}

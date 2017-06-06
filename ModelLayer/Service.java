@@ -1,29 +1,21 @@
 package ModelLayer;
 
 public class Service {
-
-	private int sId;
+	private static int serviceCount = 0;
 	private int price;
 	private String description;
 	private boolean status;
+	private int serviceId;
 
 	public Service() {
 	}
 
 	public Service(int sId, int price, String description, boolean status) {
-		this.sId = sId;
 		this.price = price;
 		this.description = description;
 		this.status = status;
-
-	}
-
-	public int getSId() {
-		return sId;
-	}
-
-	public void setSId(int sId) { 
-		this.sId = sId;
+		serviceCount++;
+		this.serviceId=serviceCount;
 	}
 
 	public int getPrice() {
@@ -50,4 +42,11 @@ public class Service {
 		this.status = status;
 	}
 
+	public int getId() {
+		return serviceId;
+	}
+
+	public void setId(int serviceId) {
+		this.serviceId = serviceId;
+	}
 }

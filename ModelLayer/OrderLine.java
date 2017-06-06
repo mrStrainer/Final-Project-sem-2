@@ -3,7 +3,7 @@ package ModelLayer;
 import java.util.ArrayList;
 
 public class OrderLine {
-
+	private static int orderLineCount = 0 ;
 	private int orderLineId;
 	private int price;
 	private int amount;
@@ -14,20 +14,37 @@ public class OrderLine {
 	public OrderLine() {
 	}
 
-	public OrderLine(int orderLineId, Item Item, int price, int amount, boolean isService) {
-		this.orderLineId = orderLineId;
+	public OrderLine(Item item, int price, int amount, boolean isService) {
+		this.item = item;
 		this.price = price;
 		this.amount = amount;
 		this.isService = isService;
-		price = 0;
+		orderLineCount++;
+		this.orderLineId = orderLineCount;
 	}
 
-	public int getOrderLineId() {
+	public int getId() {
 		return orderLineId;
 	}
 
-	public void setOrderLineId(int orderLineId) {
+	public void setId(int orderLineId) {
 		this.orderLineId = orderLineId;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public int getPrice() {
@@ -53,5 +70,6 @@ public class OrderLine {
 	public void setService(boolean isService) {
 		this.isService = isService;
 	}
+
 
 }
