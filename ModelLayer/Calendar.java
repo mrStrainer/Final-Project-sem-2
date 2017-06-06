@@ -4,12 +4,17 @@ import java.util.*;
 
 public class Calendar 
 {
+	private static int calendarCount = 0;
 	private List<Service> services;
 	private List<PhotoAlbum> pas;
+	private int calendarId;
 	
 	public Calendar()
 	{
 		services = new ArrayList<>();
+		pas = new ArrayList<>();
+		calendarCount++;
+		this.calendarId = calendarCount;
 	}
 	
 	public void addService(Service service)
