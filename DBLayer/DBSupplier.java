@@ -2,7 +2,7 @@ package DBLayer;
 import ModelLayer.*;
 import java.sql.*;
 //name, price, salePrice, stock, brand, description, 
-public class DBSupplier
+public class DBSupplier implements IFDBSupplier
 {
 	private Connection con;
 	

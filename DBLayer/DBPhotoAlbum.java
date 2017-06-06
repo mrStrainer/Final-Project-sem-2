@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBPhotoAlbum implements IFDBPerson
+public class DBPhotoAlbum implements IFDBPhotoAlbum
 {
 	private Connection con;
 	

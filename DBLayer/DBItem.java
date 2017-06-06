@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBItem implements IFDBPerson
+public class DBItem implements IFDBItem
 {
 	private Connection con;
 	

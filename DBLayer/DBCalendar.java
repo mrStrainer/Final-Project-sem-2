@@ -2,7 +2,7 @@ package DBLayer;
 import ModelLayer.*;
 import java.sql.*;
 //name, price, salePrice, stock, brand, description, 
-public class DBCalendar
+public class DBCalendar implements IFDBCalendar
 {
 	private Connection con;
 	

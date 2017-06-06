@@ -2,7 +2,6 @@ package ModelLayer;
 
 public class Phone extends Item
 {
-	private int phoneId;
 	private String scSize, RAM;
 	
 	public Phone(){}
@@ -13,11 +12,7 @@ public class Phone extends Item
 		this.scSize=scSize;
 		this.RAM=RAM;
 	}
-	
-	public void setId(int id)
-	{
-		phoneId = id;
-	}
+
 	public void setScSize(String scSize)
 	{
 		this.scSize=scSize;
@@ -26,11 +21,7 @@ public class Phone extends Item
 	{
 		this.RAM=RAM;
 	}
-	
-	public int getId()
-	{
-		return phoneId;
-	}
+
 	public String getScSize()
 	{
 		return scSize;

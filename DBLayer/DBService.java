@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBService implements IFDBPerson
+public class DBService implements IFDBService
 {
 	private Connection con;
 	

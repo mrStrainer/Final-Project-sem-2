@@ -1,13 +1,14 @@
 package ModelLayer;
 
 public class Person {
-
+	private static int pCount = 0;
 	private String fName;
 	private String lName;
 	private String email;
 	private String address;
 	private int phone;
 	private int bDay;
+	private int id;
 
 	public Person() {
 	}
@@ -19,6 +20,8 @@ public class Person {
 		this.address = address;
 		this.phone = phone;
 		this.bDay = bDay;
+		pCount++;
+		this.id=pCount;
 	}
 
 	public void setfName(String fName) {
@@ -69,4 +72,11 @@ public class Person {
 		return bDay;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

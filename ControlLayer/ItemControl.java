@@ -10,8 +10,8 @@ public class ItemControl
 	public ItemControl(){}
 	//need to insert item, get the auto inc id, use it with the specific item, just as with person/customer..
     // having just tables for the specific items/person would make it way easier tho
-	public void insertMemory(String name, int price, int salePrice, int stock, String brand, String description, int mId, String size, String type) throws Exception {
-	    Memory memory = new Memory(name,price,salePrice,stock,brand, description, mId, size, type);
+	public void insertMemory(String name, int price, int salePrice, int stock, String brand, String description, String size, String type) throws Exception {
+	    Memory memory = new Memory(name,price,salePrice,stock,brand, description, size, type);
         try {
             DBConnection.startTransaction();
             DBMemory dbMemory = new DBMemory();
@@ -23,8 +23,8 @@ public class ItemControl
         }
     }
 
-	public void insertCamera(String name, int price, int salePrice, int stock, String brand, String description, int camId, String type, String resolution) throws Exception {
-        Camera camera = new Camera(name,price,salePrice,stock,brand, description, camId, type, resolution);
+	public void insertCamera(String name, int price, int salePrice, int stock, String brand, String description, String type, String resolution) throws Exception {
+        Camera camera = new Camera(name,price,salePrice,stock,brand, description, type, resolution);
         try {
             DBConnection.startTransaction();
             DBCamera dbCamera = new DBCamera();
@@ -36,9 +36,8 @@ public class ItemControl
         }
     }
 
-	public void insertCopier(String name, int price, int salePrice, int stock, String brand, String description, int copyId, String type, String speed) throws Exception {
-        Copier copier = new Copier(name, price, salePrice, stock, brand, description, copyId, type, speed);
-        copier.getId()
+	public void insertCopier(String name, int price, int salePrice, int stock, String brand, String description, String type, String speed) throws Exception {
+        Copier copier = new Copier(name, price, salePrice, stock, brand, description, type, speed);
 
         try {
             DBConnection.startTransaction();
@@ -51,8 +50,8 @@ public class ItemControl
         }
     }
 
-	public void insertPrinter(String name, int price, int salePrice, int stock, String brand, String description, int printId, String type, String size) throws Exception {
-        Printer printer = new Printer(name,price,salePrice,stock, brand, description, printId, type, size);
+	public void insertPrinter(String name, int price, int salePrice, int stock, String brand, String description, String type, String size) throws Exception {
+        Printer printer = new Printer(name,price,salePrice,stock, brand, description, type, size);
         try {
             DBConnection.startTransaction();
             DBPrinter dbPrinter = new DBPrinter();
@@ -64,8 +63,8 @@ public class ItemControl
         }
     }
 
-	public void insertPhone(String name, int price, int salePrice, int stock, String brand, String description, int phoneId, String ram, String scrSize) throws Exception {
-        Phone phone = new Phone(name,price,salePrice,stock, brand, description, phoneId, ram, scrSize);
+	public void insertPhone(String name, int price, int salePrice, int stock, String brand, String description, String ram, String scrSize) throws Exception {
+        Phone phone = new Phone(name,price,salePrice,stock, brand, description, ram, scrSize);
         try {
             DBConnection.startTransaction();
             DBPhone dbPhone = new DBPhone();
@@ -77,8 +76,8 @@ public class ItemControl
         }
     }
 
-	public void insertOther(String name, int price, int salePrice, int stock, String brand, String description, int copyId) throws Exception {
-        Other other = new Other(name,price,salePrice,stock, brand, description, copyId);
+	public void insertOther(String name, int price, int salePrice, int stock, String brand, String description) throws Exception {
+        Other other = new Other(name,price,salePrice,stock, brand, description);
         try {
             DBConnection.startTransaction();
             DBOther dbOther = new DBOther();

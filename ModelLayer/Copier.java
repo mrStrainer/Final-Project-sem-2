@@ -2,27 +2,17 @@ package ModelLayer;
 
 public class Copier extends Item
 {
-	private int copyId;
 	private String type, speed;
 	
 	public Copier(){}
 	
-	public Copier(String name, int price, int salePrice, int stock, String brand, String description, int copyId)
+	public Copier(String name, int price, int salePrice, int stock, String brand, String description, String type, String speed)
 	{
 		super(name, price, salePrice, stock, brand, description);
-		this.copyId = super.getID();
+		this.type =type;
+		this.speed =speed;
 	}
-	
-	public void setId(int id)
-	{
-		copyId = id;
-	}
-	
-	public int getId()
-	{
-		return copyId;
-	}
-	
+
 	public void setType(String type)
 	{
 		this.type = type;

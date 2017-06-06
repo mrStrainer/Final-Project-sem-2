@@ -2,27 +2,17 @@ package ModelLayer;
 
 public class Camera extends Item
 {
-	private int camId;
 	private String type, resolution;
 	
 	public Camera(){}
 	
-	public Camera(String name, int price, int salePrice, int stock, String brand, String description, int camId)
+	public Camera(String name, int price, int salePrice, int stock, String brand, String description, String type, String resolution)
 	{
 		super(name, price, salePrice, stock, brand, description);
-		this.camId = camId;
+		this.type = type;
+		this.resolution = resolution;
 	}
-	
-	public void setId(int id)
-	{
-		camId = id;
-	}
-	
-	public int getId()
-	{
-		return camId;
-	}
-	
+
 	public void setType(String type)
 	{
 		this.type = type;

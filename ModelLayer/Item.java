@@ -1,9 +1,9 @@
 package ModelLayer;
 
 public class Item {
-	private int price, salePrice, stock;
+	private int price, salePrice, stock, id;
 	private String name, brand, description;
-	private static int ID  =0;
+	private static int count = 0;
 
 	public Item() {
 	}
@@ -15,7 +15,9 @@ public class Item {
 		this.stock = stock;
 		this.brand = brand;
 		this.description = description;
-		this.ID++;
+
+		count++;
+		this.id =count;
 	}
 
 	public void setName(String name) {
@@ -66,11 +68,19 @@ public class Item {
 		this.description = description;
 	}
 
-	public static int getID() {
-		return ID;
+	public int getSalePrice() {
+		return salePrice;
 	}
 
-	public static void setID(int ID) {
-		Item.ID = ID;
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

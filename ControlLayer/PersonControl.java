@@ -8,8 +8,7 @@ import ModelLayer.*;
 public class PersonControl 
 {
 	public PersonControl(){}
-	//need to get the id from the inserted person before i can set it for the customer, also applies to the other two
-	public void insertCustomer(String fName, String lName, String email, String address, int phone, int bDay/*, int cId*/) throws Exception{
+	public void insertCustomer(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
         Customer customer = new Customer();
         customer.setfName(fName);
         customer.setlName(lName);
@@ -17,7 +16,6 @@ public class PersonControl
         customer.setAddress(address);
         customer.setPhone(phone);
         customer.setbDay(bDay);
-        /*customer.setcId(cId);*/
 
         try {
             DBConnection.startTransaction();
@@ -30,7 +28,7 @@ public class PersonControl
         }
     }
 	
-	public void insertSupplier(String fName, String lName, String email, String address, int phone, int bDay/*, int sId*/) throws Exception{
+	public void insertSupplier(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
         Supplier supplier = new Supplier();
         supplier.setfName(fName);
         supplier.setlName(lName);
@@ -38,7 +36,6 @@ public class PersonControl
         supplier.setAddress(address);
         supplier.setPhone(phone);
         supplier.setbDay(bDay);
-        //supplier.setsId(sId);
 
         try {
             DBConnection.startTransaction();
@@ -51,7 +48,7 @@ public class PersonControl
         }
     }
 	
-	public void insertEmployee(String fName, String lName, String email, String address, int phone, int bDay/*, int eId*/) throws Exception{
+	public void insertEmployee(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
         Employee employee = new Employee();
         employee.setfName(fName);
         employee.setlName(lName);
@@ -59,7 +56,6 @@ public class PersonControl
         employee.setAddress(address);
         employee.setPhone(phone);
         employee.setbDay(bDay);
-        //employee.seteId(eId);
 
         try {
             DBConnection.startTransaction();
@@ -91,7 +87,6 @@ public class PersonControl
         IFDBEmployee ifdbEmployee = new DBEmployee();
         return ifdbEmployee.delete(id);
     }/*
-    inserting and deleting a customer/employee/supplier should do the insertion / deletion of the corresponding person as well
 
     public Person DeletePerson (int id) {
         IFDBPerson dbPerson = new DBPerson();
