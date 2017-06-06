@@ -86,12 +86,7 @@ public class PersonControl
     public boolean DeleteEmployee (int id) {
         IFDBEmployee ifdbEmployee = new DBEmployee();
         return ifdbEmployee.delete(id);
-    }/*
-
-    public Person DeletePerson (int id) {
-        IFDBPerson dbPerson = new DBPerson();
-        return dbPerson.delete(id);
-    }*/
+    }
 	
 	public ArrayList<Person> findAllPersons()
     {
