@@ -14,21 +14,20 @@ public class OrderLine {
 	public OrderLine() {
 	}
 
-	public OrderLine(int orderLineId, Item item, int price, int amount, boolean isService) {
-		this.orderLineId = orderLineId;
+	public OrderLine(Item item, int price, int amount, boolean isService) {
 		this.item = item;
 		this.price = price;
 		this.amount = amount;
 		this.isService = isService;
 		orderLineCount++;
-		orderLineId = orderLineCount;
+		this.orderLineId = orderLineCount;
 	}
 
-	public int getOrderLineId() {
+	public int getId() {
 		return orderLineId;
 	}
 
-	public void setOrderLineId(int orderLineId) {
+	public void setId(int orderLineId) {
 		this.orderLineId = orderLineId;
 	}
 

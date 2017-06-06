@@ -2,10 +2,12 @@ package ModelLayer;
 
 public class PhotoAlbum 
 {
+	private static int phCount = 0;
 	private int picAmount, price;
 	private String size;
 	private String pType;
 	private String cType;
+	private int phId;
 	
 	public PhotoAlbum(){}
 	
@@ -14,8 +16,10 @@ public class PhotoAlbum
 		this.picAmount = picAmount;
 		this.price = price;
 		this.size = size;
-		pType = paperType;
-		cType = coverType;
+		this.pType = paperType;
+		this.cType = coverType;
+		phCount++;
+		this.phId = phCount;
 	}
 	
 	public void setPicAmount(int picAmount)
@@ -26,18 +30,6 @@ public class PhotoAlbum
 	{
 		this.price = price;
 	}
-	public void setSize(String size)
-	{
-		this.size = size;//*can be only Small, Medium or Large
-	}
-	public void setPType(String pType)
-	{
-		this.pType = pType;
-	}
-	public void setCType(String cType)
-	{
-		this.cType = cType;
-	}
 	
 	public int getPicAmount()
 	{
@@ -47,17 +39,36 @@ public class PhotoAlbum
 	{
 		return price;
 	}
-	public String getSize()
-	{
+
+	public String getSize() {
 		return size;
 	}
-	public String getPType()
-	{
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getpType() {
 		return pType;
 	}
-	public String getCType()
-	{
+
+	public void setpType(String pType) {
+		this.pType = pType;
+	}
+
+	public String getcType() {
 		return cType;
 	}
-	
+
+	public void setcType(String cType) {
+		this.cType = cType;
+	}
+
+	public int getId() {
+		return phId;
+	}
+
+	public void setId(int phId) {
+		this.phId = phId;
+	}
 }

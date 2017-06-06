@@ -1,10 +1,11 @@
 package ModelLayer;
 
 public class Service {
-
+	private static int serviceCount = 0;
 	private int price;
 	private String description;
 	private boolean status;
+	private int serviceId;
 
 	public Service() {
 	}
@@ -13,6 +14,8 @@ public class Service {
 		this.price = price;
 		this.description = description;
 		this.status = status;
+		serviceCount++;
+		this.serviceId=serviceCount;
 	}
 
 	public int getPrice() {
@@ -39,4 +42,11 @@ public class Service {
 		this.status = status;
 	}
 
+	public int getId() {
+		return serviceId;
+	}
+
+	public void setId(int serviceId) {
+		this.serviceId = serviceId;
+	}
 }

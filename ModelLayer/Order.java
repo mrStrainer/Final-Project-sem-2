@@ -40,11 +40,11 @@ public class Order {
 		this.totalPrice = totalPrice;
 	}
 
-	public int getOrderId() {
+	public int getId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setId(int orderId) {
 		this.orderId = orderId;
 	}
 }

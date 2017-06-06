@@ -49,11 +49,11 @@ public class Calendar
 		this.pas = pas;
 	}
 
-	public int getCalendarId() {
+	public int getId() {
 		return calendarId;
 	}
 
-	public void setCalendarId(int calendarId) {
+	public void setId(int calendarId) {
 		this.calendarId = calendarId;
 	}
 }
