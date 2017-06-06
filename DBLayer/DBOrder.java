@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBOrder implements IFDBOrder
+public class DBOrder implements IFDBPerson
 {
 	private Connection con;
 	
@@ -20,13 +20,9 @@ public class DBOrder implements IFDBOrder
 	public int insertOrder(Order order) throws Exception
 	{  
 		int rc = -1;
-		String query="INSERT INTO Order(fName, lName, email, address, phone, bDay)  VALUES('"+
-				order.getfName()  + "','"  +
-				order.getlName()  + "','"  +
-				order.getEmail()  + "','"  +
-				order.getAddress()  + "','"  +
-				order.getPhone()  + "','"  +
-				order.getbDay() +"'";
+		String query="INSERT INTO Order(orderId, totalPrice)  VALUES('"+
+				order.getId()  + "','"  +
+				order.getTotalPrice()  + "'";
 
 
 		System.out.println("insert : " + query);
@@ -37,8 +33,8 @@ public class DBOrder implements IFDBOrder
 			stmt.close();
 		}
 		catch(SQLException ex){
-			System.out.println("Person not Created");
-			throw new Exception ("Person is not inserted correct");
+			System.out.println("Order not Created");
+			throw new Exception ("Order is not inserted correct");
 		}
 		return(rc);
 	}
@@ -47,7 +43,7 @@ public class DBOrder implements IFDBOrder
 	{
 		int rc=-1;
 
-		String query="DELETE FROM Person WHERE pId = '" + id + "'";
+		String query="DELETE FROM Order WHERE orderId = '" + id + "'";
 		System.out.println(query);
 		try{
 			Statement stmt = con.createStatement();
@@ -56,7 +52,7 @@ public class DBOrder implements IFDBOrder
 			stmt.close();
 		}
 		catch(Exception ex){
-			System.out.println("Delete exception in Person DB: "+ex);
+			System.out.println("Delete exception in Order DB: "+ex);
 		}
 		return(rc);
 	}
@@ -64,7 +60,7 @@ public class DBOrder implements IFDBOrder
 	private Person singleWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		Person pObj = new Person();
+		Order pObj = new Order();
 
 		String query =  buildQuery(wClause);
 		System.out.println(query);
@@ -75,7 +71,7 @@ public class DBOrder implements IFDBOrder
 
 
 			if( results.next() ){
-				pObj = buildPerson(results);
+				pObj = buildOrder(results);
 			}
 			else{ 
 				pObj = null;
@@ -89,10 +85,10 @@ public class DBOrder implements IFDBOrder
 		return pObj;
 	}
 	
-	private ArrayList<Person> miscWhere(String wClause, boolean retrieveAssociation)
+	private ArrayList<Order> miscWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		ArrayList<Person> list = new ArrayList<Person>();	
+		ArrayList<Order> list = new ArrayList<Order>();	
 
 		String query =  buildQuery(wClause);
 
@@ -105,8 +101,8 @@ public class DBOrder implements IFDBOrder
 
 			while( results.next() )
 			{
-				Person pObj = new Person();
-				pObj = buildPerson(results);	
+				Order pObj = new Order();
+				pObj = buildOrder(results);	
 				list.add(pObj);	
 			}
 			stmt.close();     
@@ -121,7 +117,7 @@ public class DBOrder implements IFDBOrder
 	
 	private String buildQuery(String wClause)
 	{
-		String query="SELECT * FROM PERSON";
+		String query="SELECT * FROM Order";
 
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -129,19 +125,15 @@ public class DBOrder implements IFDBOrder
 		return query;
 	}
 	
-	private Person buildPerson(ResultSet results)
-	{   Person pObj = new Person();
+	private Order buildOrder(ResultSet results)
+	{   Order pObj = new Order();
 	try{ 
-		pObj.setfName(results.getString("fName"));
-		pObj.setlName(results.getString("lName"));
-		pObj.setEmail(results.getString("email"));
-		pObj.setAddress(results.getString("address"));
-		pObj.setPhone(results.getInt("phone"));
-		pObj.setbDay(results.getInt("bDay"));
+		pObj.setIdresults.getString("orderId"));
+		pObj.setTotalPrice(results.getString("totalPrice"));
 	}
 	catch(Exception e)
 	{
-		System.out.println("error in building the Person object");
+		System.out.println("error in building the Order object");
 	}
 	return pObj;
 	}

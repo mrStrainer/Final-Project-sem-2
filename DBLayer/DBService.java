@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBService implements IFDBService
+public class DBService implements IFDBPerson
 {
 	private Connection con;
 	
@@ -12,33 +12,26 @@ public class DBService implements IFDBService
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
-	public ArrayList<Person> getAllPersons(boolean retriveAssociation)
+	public ArrayList<Service> getAllServices(boolean retriveAssociation)
 	{
 		return miscWhere("", retriveAssociation);
 	}
 
-	public Person findSupplier(int id, boolean retriveAssociation)
+	public Service findService(int id, boolean retriveAssociation)
 	{   
-		String wClause = "  id = '" + id + "', type = 'true'";
-		return singleWhere(wClause, retriveAssociation);
-	}
-	
-	public Person findCustomer(int id, boolean retriveAssociation)
-	{   
-		String wClause = "  id = '" + id + "', type = 'false'";
+		String wClause = "  id = '" + id + "'";
 		return singleWhere(wClause, retriveAssociation);
 	}
 
-	public int insertPerson(Person person) throws Exception
+	public int insertService(Service service) throws Exception
 	{  
 		int rc = -1;
-		String query="INSERT INTO Person(fName, lName, email, address, phone, bDay)  VALUES('"+
-				person.getfName()  + "','"  +
-				person.getlName()  + "','"  +
-				person.getEmail()  + "','"  +
-				person.getAddress()  + "','"  +
-				person.getPhone()  + "','"  +
-				person.getbDay() +"'";
+		String query="INSERT INTO Service(startDate, description, location, status, serviceId) VALUES('"+
+				service.getStartDate()  + "','"  +
+				service.getDescription()  + "','"  +
+				service.getLocation()  + "','"  +
+				service.getStatus()  + "','"  +
+				service.getId() +"'";
 
 
 		System.out.println("insert : " + query);
@@ -49,8 +42,8 @@ public class DBService implements IFDBService
 			stmt.close();
 		}
 		catch(SQLException ex){
-			System.out.println("Person not Created");
-			throw new Exception ("Person is not inserted correct");
+			System.out.println("Service not Created");
+			throw new Exception ("Service is not inserted correct");
 		}
 		return(rc);
 	}
@@ -59,7 +52,7 @@ public class DBService implements IFDBService
 	{
 		int rc=-1;
 
-		String query="DELETE FROM Person WHERE pId = '" + id + "'";
+		String query="DELETE FROM Service WHERE serviceId = '" + id + "'";
 		System.out.println(query);
 		try{
 			Statement stmt = con.createStatement();
@@ -68,15 +61,15 @@ public class DBService implements IFDBService
 			stmt.close();
 		}
 		catch(Exception ex){
-			System.out.println("Delete exception in Person DB: "+ex);
+			System.out.println("Delete exception in Service DB: "+ex);
 		}
 		return(rc);
 	}
 	
-	private Person singleWhere(String wClause, boolean retrieveAssociation)
+	private Service singleWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		Person pObj = new Person();
+		Service pObj = new Service();
 
 		String query =  buildQuery(wClause);
 		System.out.println(query);
@@ -87,7 +80,7 @@ public class DBService implements IFDBService
 
 
 			if( results.next() ){
-				pObj = buildPerson(results);
+				pObj = buildService(results);
 			}
 			else{ 
 				pObj = null;
@@ -101,10 +94,10 @@ public class DBService implements IFDBService
 		return pObj;
 	}
 	
-	private ArrayList<Person> miscWhere(String wClause, boolean retrieveAssociation)
+	private ArrayList<Service> miscWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		ArrayList<Person> list = new ArrayList<Person>();	
+		ArrayList<Service> list = new ArrayList<Service>();	
 
 		String query =  buildQuery(wClause);
 
@@ -117,8 +110,8 @@ public class DBService implements IFDBService
 
 			while( results.next() )
 			{
-				Person pObj = new Person();
-				pObj = buildPerson(results);	
+				Service pObj = new Service();
+				pObj = buildService(results);	
 				list.add(pObj);	
 			}
 			stmt.close();     
@@ -133,7 +126,7 @@ public class DBService implements IFDBService
 	
 	private String buildQuery(String wClause)
 	{
-		String query="SELECT * FROM PERSON";
+		String query="SELECT * FROM Service";
 
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -141,19 +134,18 @@ public class DBService implements IFDBService
 		return query;
 	}
 	
-	private Person buildPerson(ResultSet results)
-	{   Person pObj = new Person();
+	private Service buildService(ResultSet results)
+	{   Service pObj = new Service();
 	try{ 
-		pObj.setfName(results.getString("fName"));
-		pObj.setlName(results.getString("lName"));
-		pObj.setEmail(results.getString("email"));
-		pObj.setAddress(results.getString("address"));
-		pObj.setPhone(results.getInt("phone"));
-		pObj.setbDay(results.getInt("bDay"));
+		pObj.setStartDate(results.getString("startDate"));
+		pObj.setDescription(results.getString("description"));
+		pObj.setLocation(results.getString("location"));
+		pObj.setStatus(results.getBoolean("status"));
+		pObj.setID(results.getInt("serviceId"));
 	}
 	catch(Exception e)
 	{
-		System.out.println("error in building the Person object");
+		System.out.println("error in building the Service object");
 	}
 	return pObj;
 	}

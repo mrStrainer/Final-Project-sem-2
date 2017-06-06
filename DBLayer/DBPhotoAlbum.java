@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBPhotoAlbum implements IFDBPhotoAlbum
+public class DBPhotoAlbum implements IFDBPerson
 {
 	private Connection con;
 	
@@ -12,33 +12,26 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
-	public ArrayList<Person> getAllPersons(boolean retriveAssociation)
+	public ArrayList<PhotoAlbum> getAllPhotoAlbums(boolean retriveAssociation)
 	{
 		return miscWhere("", retriveAssociation);
 	}
 
-	public Person findSupplier(int id, boolean retriveAssociation)
+	public PhotoAlbum findPhotoAlbum(int id, boolean retriveAssociation)
 	{   
-		String wClause = "  id = '" + id + "', type = 'true'";
-		return singleWhere(wClause, retriveAssociation);
-	}
-	
-	public Person findCustomer(int id, boolean retriveAssociation)
-	{   
-		String wClause = "  id = '" + id + "', type = 'false'";
+		String wClause = "  id = '" + id + "'";
 		return singleWhere(wClause, retriveAssociation);
 	}
 
-	public int insertPerson(Person person) throws Exception
+	public int insertPA(PhotoAlbum pa) throws Exception
 	{  
 		int rc = -1;
-		String query="INSERT INTO Person(fName, lName, email, address, phone, bDay)  VALUES('"+
-				person.getfName()  + "','"  +
-				person.getlName()  + "','"  +
-				person.getEmail()  + "','"  +
-				person.getAddress()  + "','"  +
-				person.getPhone()  + "','"  +
-				person.getbDay() +"'";
+		String query="INSERT INTO PhotoAlbum(size, pAmount, pType, cType, phId)  VALUES('"+
+				pa.getSize()  + "','"  +
+				pa.getPicAmount()  + "','"  +
+				pa.getPType()  + "','"  +
+				pa.getCType()  + "','"  +
+				pa.getId() +"'";
 
 
 		System.out.println("insert : " + query);
@@ -49,8 +42,8 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 			stmt.close();
 		}
 		catch(SQLException ex){
-			System.out.println("Person not Created");
-			throw new Exception ("Person is not inserted correct");
+			System.out.println("PhotoAlbum not Created");
+			throw new Exception ("PhotoAlbum is not inserted correct");
 		}
 		return(rc);
 	}
@@ -59,7 +52,7 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 	{
 		int rc=-1;
 
-		String query="DELETE FROM Person WHERE pId = '" + id + "'";
+		String query="DELETE FROM PhotoAlbum WHERE phId = '" + id + "'";
 		System.out.println(query);
 		try{
 			Statement stmt = con.createStatement();
@@ -68,15 +61,15 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 			stmt.close();
 		}
 		catch(Exception ex){
-			System.out.println("Delete exception in Person DB: "+ex);
+			System.out.println("Delete exception in PhotoAlbum DB: "+ex);
 		}
 		return(rc);
 	}
 	
-	private Person singleWhere(String wClause, boolean retrieveAssociation)
+	private PhotoAlbum singleWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		Person pObj = new Person();
+		PhotoAlbum pObj = new PhotoAlbum();
 
 		String query =  buildQuery(wClause);
 		System.out.println(query);
@@ -87,7 +80,7 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 
 
 			if( results.next() ){
-				pObj = buildPerson(results);
+				pObj = buildPhotoAlbum(results);
 			}
 			else{ 
 				pObj = null;
@@ -101,10 +94,10 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 		return pObj;
 	}
 	
-	private ArrayList<Person> miscWhere(String wClause, boolean retrieveAssociation)
+	private ArrayList<PhotoAlbum> miscWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		ArrayList<Person> list = new ArrayList<Person>();	
+		ArrayList<PhotoAlbum> list = new ArrayList<PhotoAlbum>();	
 
 		String query =  buildQuery(wClause);
 
@@ -117,8 +110,8 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 
 			while( results.next() )
 			{
-				Person pObj = new Person();
-				pObj = buildPerson(results);	
+				PhotoAlbum pObj = new PhotoAlbum();
+				pObj = buildPhotoAlbum(results);	
 				list.add(pObj);	
 			}
 			stmt.close();     
@@ -133,7 +126,7 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 	
 	private String buildQuery(String wClause)
 	{
-		String query="SELECT * FROM PERSON";
+		String query="SELECT * FROM PhotoAlbum";
 
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -141,19 +134,18 @@ public class DBPhotoAlbum implements IFDBPhotoAlbum
 		return query;
 	}
 	
-	private Person buildPerson(ResultSet results)
-	{   Person pObj = new Person();
+	private PhotoAlbum buildPhotoAlbum(ResultSet results)
+	{   PhotoAlbum pObj = new PhotoAlbum();
 	try{ 
-		pObj.setfName(results.getString("fName"));
-		pObj.setlName(results.getString("lName"));
-		pObj.setEmail(results.getString("email"));
-		pObj.setAddress(results.getString("address"));
-		pObj.setPhone(results.getInt("phone"));
-		pObj.setbDay(results.getInt("bDay"));
+		pObj.setSize(results.getString("size"));
+		pObj.setPicAmount(results.getInt("pAmount"));
+		pObj.setPType(results.getString("pType"));
+		pObj.setCType(results.getString("cType"));
+		pObj.setId(results.getInt("phId"));
 	}
 	catch(Exception e)
 	{
-		System.out.println("error in building the Person object");
+		System.out.println("error in building the PhotoAlbum object");
 	}
 	return pObj;
 	}

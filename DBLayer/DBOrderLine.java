@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBOrderLine implements IFDBOrderLine
+public class DBOrderLine implements IFDBPerson
 {
 	private Connection con;
 	
@@ -12,33 +12,24 @@ public class DBOrderLine implements IFDBOrderLine
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
-	public ArrayList<Person> getAllPersons(boolean retriveAssociation)
+	public ArrayList<OrderLine> getAllOrderLines(boolean retriveAssociation)
 	{
 		return miscWhere("", retriveAssociation);
 	}
 
-	public Person findSupplier(int id, boolean retriveAssociation)
+	public OrderLine findOrderLine(int id, boolean retriveAssociation)
 	{   
-		String wClause = "  id = '" + id + "', type = 'true'";
-		return singleWhere(wClause, retriveAssociation);
-	}
-	
-	public Person findCustomer(int id, boolean retriveAssociation)
-	{   
-		String wClause = "  id = '" + id + "', type = 'false'";
+		String wClause = "  id = '" + id + "'";
 		return singleWhere(wClause, retriveAssociation);
 	}
 
-	public int insertPerson(Person person) throws Exception
+	public int insertOrderLine(OrderLine ol) throws Exception
 	{  
 		int rc = -1;
-		String query="INSERT INTO Person(fName, lName, email, address, phone, bDay)  VALUES('"+
-				person.getfName()  + "','"  +
-				person.getlName()  + "','"  +
-				person.getEmail()  + "','"  +
-				person.getAddress()  + "','"  +
-				person.getPhone()  + "','"  +
-				person.getbDay() +"'";
+		String query="INSERT INTO OrderLine(price, amount, olId)  VALUES('"+
+				ol.getPrice()  + "','"  +
+				ol.getAmount()  + "','"  +
+				ol.getId()  +"'";
 
 
 		System.out.println("insert : " + query);
@@ -49,8 +40,8 @@ public class DBOrderLine implements IFDBOrderLine
 			stmt.close();
 		}
 		catch(SQLException ex){
-			System.out.println("Person not Created");
-			throw new Exception ("Person is not inserted correct");
+			System.out.println("OrderLine not Created");
+			throw new Exception ("OrderLine is not inserted correct");
 		}
 		return(rc);
 	}
@@ -59,7 +50,7 @@ public class DBOrderLine implements IFDBOrderLine
 	{
 		int rc=-1;
 
-		String query="DELETE FROM Person WHERE pId = '" + id + "'";
+		String query="DELETE FROM OrderLine WHERE olId = '" + id + "'";
 		System.out.println(query);
 		try{
 			Statement stmt = con.createStatement();
@@ -68,15 +59,15 @@ public class DBOrderLine implements IFDBOrderLine
 			stmt.close();
 		}
 		catch(Exception ex){
-			System.out.println("Delete exception in Person DB: "+ex);
+			System.out.println("Delete exception in OrderLine DB: "+ex);
 		}
 		return(rc);
 	}
 	
-	private Person singleWhere(String wClause, boolean retrieveAssociation)
+	private OrderLine singleWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		Person pObj = new Person();
+		OrderLine pObj = new OrderLine();
 
 		String query =  buildQuery(wClause);
 		System.out.println(query);
@@ -87,7 +78,7 @@ public class DBOrderLine implements IFDBOrderLine
 
 
 			if( results.next() ){
-				pObj = buildPerson(results);
+				pObj = buildOrderLine(results);
 			}
 			else{ 
 				pObj = null;
@@ -101,10 +92,10 @@ public class DBOrderLine implements IFDBOrderLine
 		return pObj;
 	}
 	
-	private ArrayList<Person> miscWhere(String wClause, boolean retrieveAssociation)
+	private ArrayList<OrderLine> miscWhere(String wClause, boolean retrieveAssociation)
 	{
 		ResultSet results;
-		ArrayList<Person> list = new ArrayList<Person>();	
+		ArrayList<OrderLine> list = new ArrayList<OrderLine>();	
 
 		String query =  buildQuery(wClause);
 
@@ -117,8 +108,8 @@ public class DBOrderLine implements IFDBOrderLine
 
 			while( results.next() )
 			{
-				Person pObj = new Person();
-				pObj = buildPerson(results);	
+				OrderLine pObj = new OrderLine();
+				pObj = buildOrderLine(results);	
 				list.add(pObj);	
 			}
 			stmt.close();     
@@ -133,7 +124,7 @@ public class DBOrderLine implements IFDBOrderLine
 	
 	private String buildQuery(String wClause)
 	{
-		String query="SELECT * FROM PERSON";
+		String query="SELECT * FROM OrderLine";
 
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -141,19 +132,16 @@ public class DBOrderLine implements IFDBOrderLine
 		return query;
 	}
 	
-	private Person buildPerson(ResultSet results)
-	{   Person pObj = new Person();
+	private OrderLine buildOrderLine(ResultSet results)
+	{   OrderLine pObj = new OrderLine();
 	try{ 
-		pObj.setfName(results.getString("fName"));
-		pObj.setlName(results.getString("lName"));
-		pObj.setEmail(results.getString("email"));
-		pObj.setAddress(results.getString("address"));
-		pObj.setPhone(results.getInt("phone"));
-		pObj.setbDay(results.getInt("bDay"));
+		pObj.setPrice(results.getString("price"));
+		pObj.setAmount(results.getString("amount"));
+		pObj.setId(results.getString("olId"));
 	}
 	catch(Exception e)
 	{
-		System.out.println("error in building the Person object");
+		System.out.println("error in building the OrderLine object");
 	}
 	return pObj;
 	}
