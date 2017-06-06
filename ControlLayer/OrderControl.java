@@ -1,14 +1,14 @@
 package ControlLayer;
 
 import DBLayer.*;
-import ModelLayer.Order;
+import ModelLayer.*;
 
 /**
  * Created by atee on 2017.06.04..
  */
 public class OrderControl {
-    public void insertOrder(String name, int price, int salePrice, int stock, String brand, String description, String size, String type) throws Exception {
-        Order order = new Order();
+    public void insertOrder(Order order) throws Exception {
+
         try {
             DBConnection.startTransaction();
             IFDBOrder ifdbOrder = new DBOrder();
@@ -18,6 +18,20 @@ public class OrderControl {
             DBConnection.rollbackTransaction();
             throw new Exception("Order not inserted");
         }
-        //insert orderLines
+        for (OrderLine ol : order.getOrders()) {
+            insertOrderLine(ol);
+        }
+    }
+    public void insertOrderLine(OrderLine ol) throws Exception {
+        try {
+            DBConnection.startTransaction();
+            IFDBOrderLine ifdbOrderLine = new DBOrderLine();
+            ifdbOrderLine.insertOrderLine(ol);
+            DBConnection.commitTransaction();
+        } catch (Exception e) {
+            DBConnection.rollbackTransaction();
+            throw new Exception("OrderLine not inserted");
+        }
+
     }
 }
