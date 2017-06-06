@@ -165,6 +165,24 @@ public class Create extends JFrame
 		textField.setColumns(10);
 
 		btnMemory = new JButton("Memory");
+		btnMemory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				String price1 = txtPrice.getText();
+				int price = Integer.parseInt(price1);
+				String sPrice1 = txtSalePrice.getText();
+				int sPrice = Integer.parseInt(sPrice1);
+				String stock1 = txtStock.getText();
+				int stock = Integer.parseInt(stock1);
+				String description = textField.getText();
+				String type = txtSsdhdd.getText();
+				String size = txtmbtbtb.getText();
+				ItemControl item = new ItemControl();
+				item.insertMemory(name, price, sPrice, stock, description, size, type);
+				panelItem.setVisible(false);
+				panelChoose.setVisible(true);
+			}
+		});
 		btnMemory.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnMemory.setBounds(1275, 70, 150, 50);
 		panelItem.add(btnMemory);
@@ -204,6 +222,24 @@ public class Create extends JFrame
 		panelItem.add(txtx);
 
 		btnPrinter = new JButton("Printer");
+		btnPrinter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				String price1 = txtPrice.getText();
+				int price = Integer.parseInt(price1);
+				String sPrice1 = txtSalePrice.getText();
+				int sPrice = Integer.parseInt(sPrice1);
+				String stock1 = txtStock.getText();
+				int stock = Integer.parseInt(stock1);
+				String description = textField.getText();
+				String type = txtLaserink.getText();
+				String size = txtx.getText();
+				ItemControl item = new ItemControl();
+				item.insertPrinter(name, price, sPrice, stock, description, type, size);
+				panelItem.setVisible(false);
+				panelChoose.setVisible(true);
+			}
+		});
 		btnPrinter.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnPrinter.setBounds(1275, 190, 150, 50);
 		panelItem.add(btnPrinter);
@@ -241,6 +277,24 @@ public class Create extends JFrame
 		panelItem.add(txtmpmpmp);
 
 		btnCamera = new JButton("Camera");
+		btnCamera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				String price1 = txtPrice.getText();
+				int price = Integer.parseInt(price1);
+				String sPrice1 = txtSalePrice.getText();
+				int sPrice = Integer.parseInt(sPrice1);
+				String stock1 = txtStock.getText();
+				int stock = Integer.parseInt(stock1);
+				String description = textField.getText();
+				String type = txtMonocolornetwork.getText();
+				String resolution = txtmpmpmp.getText();
+				ItemControl item = new ItemControl();
+				item.insertCamera(name, price, sPrice, stock, description, type, resolution);
+				panelItem.setVisible(false);
+				panelChoose.setVisible(true);
+			}
+		});
 		btnCamera.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCamera.setBounds(1275, 310, 150, 50);
 		panelItem.add(btnCamera);
@@ -268,6 +322,24 @@ public class Create extends JFrame
 		panelItem.add(textField_2);
 
 		btnPhone = new JButton("Phone");
+		btnPhone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				String price1 = txtPrice.getText();
+				int price = Integer.parseInt(price1);
+				String sPrice1 = txtSalePrice.getText();
+				int sPrice = Integer.parseInt(sPrice1);
+				String stock1 = txtStock.getText();
+				int stock = Integer.parseInt(stock1);
+				String description = textField.getText();
+				String scrSize = textField_2.getText();
+				String RAM = txtgbgbgb.getText();
+				ItemControl item = new ItemControl();
+				item.insertPhone(name, price, sPrice, stock, description, RAM, scrSize);
+				panelItem.setVisible(false);
+				panelChoose.setVisible(true);
+			}
+		});
 		btnPhone.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnPhone.setBounds(1275, 430, 150, 50);
 		panelItem.add(btnPhone);
@@ -295,25 +367,43 @@ public class Create extends JFrame
 		panelItem.add(txtppmppm);
 
 		btnCopier = new JButton("Copier");
+		btnCopier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				String price1 = txtPrice.getText();
+				int price = Integer.parseInt(price1);
+				String sPrice1 = txtSalePrice.getText();
+				int sPrice = Integer.parseInt(sPrice1);
+				String stock1 = txtStock.getText();
+				int stock = Integer.parseInt(stock1);
+				String description = textField.getText();
+				String type = txtMonocolornetwork_1.getText();
+				String speed = txtppmppm.getText();
+				ItemControl item = new ItemControl();
+				item.insertCopier(name, price, sPrice, stock, description, type, speed);
+				panelItem.setVisible(false);
+				panelChoose.setVisible(true);
+			}
+		});
 		btnCopier.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCopier.setBounds(1275, 550, 150, 50);
 		panelItem.add(btnCopier);
 
 		btnOther = new JButton("Other");
 		btnOther.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				String name = txtName.getText();
-				String brand = txtBrand.getText();
-				String price= txtPrice.getText();
-				String salePrice= txtSalePrice.getText();
-				String stock = txtStock.getText();
+				String price1 = txtPrice.getText();
+				int price = Integer.parseInt(price1);
+				String sPrice1 = txtSalePrice.getText();
+				int sPrice = Integer.parseInt(sPrice1);
+				String stock1 = txtStock.getText();
+				int stock = Integer.parseInt(stock1);
 				String description = textField.getText();
-				String id = textField_2.getText();
-				try {
-					ICO.insertOther(name,Integer.parseInt(price),Integer.parseInt(salePrice),Integer.parseInt(stock),brand,description,Integer.parseInt(id));
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				ItemControl item = new ItemControl();
+				item.insertOther(name, price, sPrice, stock, description);
+				panelItem.setVisible(false);
+				panelChoose.setVisible(true);
 			}
 		});
 		btnOther.setFont(new Font("Tahoma", Font.PLAIN, 20));

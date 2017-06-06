@@ -10,7 +10,7 @@ public class ItemControl
 	public ItemControl(){}
 	//need to insert item, get the auto inc id, use it with the specific item, just as with person/customer..
     // having just tables for the specific items/person would make it way easier tho
-	public void insertMemory(String name, int price, int salePrice, int stock, String brand, String description, int mId, int size, String type) throws Exception {
+	public void insertMemory(String name, int price, int salePrice, int stock, String brand, String description, int mId, String size, String type) throws Exception {
 	    Memory memory = new Memory(name,price,salePrice,stock,brand, description, mId, size, type);
         try {
             DBConnection.startTransaction();
