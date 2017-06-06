@@ -12,6 +12,12 @@ public class DBItem implements IFDBPerson
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
+	public Item findItem(int id, boolean retriveAssociation)
+	{   
+		String wClause = "  id = '" + id + "'";
+		return singleWhere(wClause, retriveAssociation);
+	}
+	
 	public ArrayList<Item> getAllItems(boolean retriveAssociation)
 	{
 		return miscWhere("", retriveAssociation);
