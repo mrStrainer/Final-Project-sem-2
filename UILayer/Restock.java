@@ -22,6 +22,7 @@ public class Restock extends JFrame
 	private JButton btnSearch;
 	private JTextArea textArea;
 	private JTextPane textPane;
+	private static Restock instance;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -40,6 +41,13 @@ public class Restock extends JFrame
 	{
 		Initialize();
 	}
+	
+	public static Restock getInstance() {
+        if (instance == null) {
+            instance = new Restock();
+        }
+        return instance;
+    }
 	
 	public void Initialize()
 	{
@@ -136,6 +144,15 @@ public class Restock extends JFrame
 		btnAddToCart = new JButton("ADD TO CART");
 		btnAddToCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String sid = textField.getText();
+				int sId = Integer.parseInt(sid);
+				String pid = textField_1.getText();
+				int pId = Integer.parseInt(pid);
+				String date = textField_2.getText();
+				String amount1 = textField_3.getText();
+				int amount = Integer.parseInt(amount1);
+				SupplyContorl sc = new SupplyControl();
+				sc.Restock(sId, pId, date, amount);
 				dispose();
 				OrderUI.main(null);
 			}

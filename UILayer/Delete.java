@@ -114,10 +114,14 @@ public class Delete extends JFrame
 		btnNo.setBounds(200, 350, 400, 200);
 		panel_1.add(btnNo);
 		
-		btnYes = new JButton("YES");
+		btnYes = new JButton("YES"); //ID CHECK (if person or item) make it external method
 		btnYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel_1.setVisible(false);
+				String id1 = textField.getText();
+				int id = Integer.parseInt(id1);
+				PersonControl personControl = new PersonControl();
+				personControl.deletePerson();
+				dispose();
 				Main.main(null);
 			}
 		});

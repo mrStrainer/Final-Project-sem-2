@@ -15,6 +15,8 @@ public class Service extends JFrame
 	private JTextField txtStartdate;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextArea textArea; 
+	private static Service instance;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -33,6 +35,13 @@ public class Service extends JFrame
 	{
 		Initialize();
 	}
+	
+	public static Service getInstance() {
+        if (instance == null) {
+            instance = new Service();
+        }
+        return instance;
+    }
 	
 	public void Initialize()
 	{
@@ -89,11 +98,22 @@ public class Service extends JFrame
 		contentPane.add(lblStartingDate);
 		
 		JButton btnAddToCart = new JButton("ADD TO CART");
+		btnAddToCart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String startDate = txtStartdate.getText();
+				String p = textField.getText();
+				int price = Integer.parseInt(p);
+				String location = textField_1.getText();
+				String description = textArea.getText();
+				OrderControl oc = new OrderControl();
+				oc.insertService(startDate, price, location, description);
+			}
+		});
 		btnAddToCart.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnAddToCart.setBounds(699, 510, 300, 100);
 		contentPane.add(btnAddToCart);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBounds(100, 360, 500, 250);
 		contentPane.add(textArea);
 		

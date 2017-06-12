@@ -19,6 +19,7 @@ public class Sale extends JFrame
 	private JTextArea textArea;
 	private JTextArea textArea_1;
 	private JTextField txtSearchThroughRandow;
+	private static Sale instance;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,6 +38,13 @@ public class Sale extends JFrame
 	{
 		Initialize();
 	}
+	
+	public static Sale getInstance() {
+        if (instance == null) {
+            instance = new Sale();
+        }
+        return instance;
+    }
 	
 	public void Initialize()
 	{
@@ -93,6 +101,10 @@ public class Sale extends JFrame
 		btnAddToCart.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnAddToCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String amount1 = textField.getText();
+				int amount = Integer.parseInt(amount1);
+				OrderControl oc = new OrderControl();
+				oc.insertSale(amount);
 				dispose();
 				OrderUI.main(null);
 			}

@@ -6,10 +6,14 @@ package ModelLayer;
 public class Restock extends OrderLine {
     private String date;
     private Item item;
+    private Supplier supplier;
+    
+    public Restock(){}
 
-    public Restock(Item item, int amount, String date) {
+    public Restock(Item item, Supplier supplier, int amount, String date) {
         super(item.getPrice(), amount);
         this.date = date;
         this.item = item;
+        this.supplier = supplier;
     }
 }

@@ -62,6 +62,12 @@ public class CalendarUI extends JFrame
 		contentPane.add(textArea);
 		
 		btnFinish = new JButton("Finish");
+		btnFinish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				Main.main(null);
+			}
+		});
 		btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnFinish.setBounds(1250, 450, 150, 50);
 		contentPane.add(btnFinish);

@@ -20,6 +20,7 @@ public class Print extends JFrame
 	private JEditorPane editorPane_1;
 	private JComboBox comboBox;
 	private JComboBox comboBox_1;
+	private static Print instance;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,6 +39,13 @@ public class Print extends JFrame
 	{
 		Initialize();
 	}
+	
+	public static Print getInstance() {
+        if (instance == null) {
+            instance = new Print();
+        }
+        return instance;
+    }
 	
 	public void Initialize()
 	{
@@ -94,6 +102,11 @@ public class Print extends JFrame
 		btnAddToCart = new JButton("ADD TO CART");
 		btnAddToCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String s = textField.getText();
+				String d = textField_1.getText();
+				String f = textField_2.getText();
+				OrderControl oc = new OrderControl();
+				oc.insertPhotoAlbum(s, d, f);
 				dispose();
 				OrderUI.main(null);
 			}
