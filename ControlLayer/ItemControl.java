@@ -1,16 +1,27 @@
 package ControlLayer;
 
-import java.util.ArrayList;
-
 import DBLayer.*;
 import ModelLayer.*;
 
 public class ItemControl 
 {
 	public ItemControl(){}
+    public void insertItem(Item item) throws Exception{
+        try {
+            DBConnection.startTransaction();
+            IFDBItem ifdbItem = new DBItem();
+            ifdbItem.insertItem(item);
+            DBConnection.commitTransaction();
+        } catch (Exception e) {
+            DBConnection.rollbackTransaction();
+            throw new Exception("Item not inserted");
+        }
+    }
+
 	public void insertMemory(String name, int price, int salePrice, int stock, String brand, String description, String size, String type) throws Exception {
 	    Memory memory = new Memory(name,price,salePrice,stock,brand, description, size, type);
-        try {
+        insertItem(memory);
+	    try {
             DBConnection.startTransaction();
             DBMemory dbMemory = new DBMemory();
             dbMemory.insertMemory(memory);
@@ -23,6 +34,7 @@ public class ItemControl
 
 	public void insertCamera(String name, int price, int salePrice, int stock, String brand, String description, String type, String resolution) throws Exception {
         Camera camera = new Camera(name,price,salePrice,stock,brand, description, type, resolution);
+        insertItem(camera);
         try {
             DBConnection.startTransaction();
             DBCamera dbCamera = new DBCamera();
@@ -36,7 +48,7 @@ public class ItemControl
 
 	public void insertCopier(String name, int price, int salePrice, int stock, String brand, String description, String type, String speed) throws Exception {
         Copier copier = new Copier(name, price, salePrice, stock, brand, description, type, speed);
-
+        insertItem(copier);
         try {
             DBConnection.startTransaction();
             DBCopier dbCopier = new DBCopier();
@@ -50,6 +62,7 @@ public class ItemControl
 
 	public void insertPrinter(String name, int price, int salePrice, int stock, String brand, String description, String type, String size) throws Exception {
         Printer printer = new Printer(name,price,salePrice,stock, brand, description, type, size);
+        insertItem(printer);
         try {
             DBConnection.startTransaction();
             DBPrinter dbPrinter = new DBPrinter();
@@ -63,6 +76,7 @@ public class ItemControl
 
 	public void insertPhone(String name, int price, int salePrice, int stock, String brand, String description, String ram, String scrSize) throws Exception {
         Phone phone = new Phone(name,price,salePrice,stock, brand, description, ram, scrSize);
+        insertItem(phone);
         try {
             DBConnection.startTransaction();
             DBPhone dbPhone = new DBPhone();
@@ -76,6 +90,7 @@ public class ItemControl
 
 	public void insertOther(String name, int price, int salePrice, int stock, String brand, String description) throws Exception {
         Other other = new Other(name,price,salePrice,stock, brand, description);
+        insertItem(other);
         try {
             DBConnection.startTransaction();
             DBOther dbOther = new DBOther();
@@ -86,7 +101,20 @@ public class ItemControl
             throw new Exception("Other not inserted");
         }
     }
-
+    public Item findItem(int id) throws Exception{
+        Item item;
+        try {
+            DBConnection.startTransaction();
+            IFDBItem ifdbItem = new DBItem();
+            item = ifdbItem.findItem(id,false); // when is this true  when is this false?
+            DBConnection.commitTransaction();
+        } catch (Exception e) {
+            DBConnection.rollbackTransaction();
+            throw new Exception("Item not found");
+        }
+        return item;
+    }
+/*
     public boolean DeleteMemory(int id) {
         IFDBMemory ifdbMemory = new DBMemory();
         return ifdbMemory.delete(id);
@@ -117,7 +145,7 @@ public class ItemControl
         IFDBItem ifdbItem = new DBItem();
         return ifdbItem.findItem(id,true);
     }
-	
+	*/
 	
 	
 }

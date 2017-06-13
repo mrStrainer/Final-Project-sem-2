@@ -1,22 +1,27 @@
 package ControlLayer;
 
-import java.util.ArrayList;
-
 import DBLayer.*;
 import ModelLayer.*;
+import java.util.ArrayList;
 
 public class PersonControl 
 {
 	public PersonControl(){}
-	public void insertCustomer(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
-        Customer customer = new Customer();
-        customer.setfName(fName);
-        customer.setlName(lName);
-        customer.setEmail(email);
-        customer.setAddress(address);
-        customer.setPhone(phone);
-        customer.setbDay(bDay);
+	public void insertPerson(Person person) throws Exception{
+        try {
+            DBConnection.startTransaction();
+            IFDBPerson ifdbPerson = new DBPerson();
+            ifdbPerson.insertPerson(person);
+            DBConnection.commitTransaction();
+        } catch (Exception e) {
+            DBConnection.rollbackTransaction();
+            throw new Exception("Person not inserted");
+        }
+    }
 
+	public void insertCustomer(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
+        Customer customer = new Customer(fName,lName,email,address,phone,bDay);
+        insertPerson(customer);
         try {
             DBConnection.startTransaction();
             DBCustomer dbCustomer = new DBCustomer();
@@ -29,14 +34,8 @@ public class PersonControl
     }
 	
 	public void insertSupplier(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
-        Supplier supplier = new Supplier();
-        supplier.setfName(fName);
-        supplier.setlName(lName);
-        supplier.setEmail(email);
-        supplier.setAddress(address);
-        supplier.setPhone(phone);
-        supplier.setbDay(bDay);
-
+        Supplier supplier = new Supplier(fName,lName,email,address,phone,bDay);
+        insertPerson(supplier);
         try {
             DBConnection.startTransaction();
             DBSupplier dbSupplier = new DBSupplier();
@@ -49,14 +48,8 @@ public class PersonControl
     }
 	
 	public void insertEmployee(String fName, String lName, String email, String address, int phone, int bDay) throws Exception{
-        Employee employee = new Employee();
-        employee.setfName(fName);
-        employee.setlName(lName);
-        employee.setEmail(email);
-        employee.setAddress(address);
-        employee.setPhone(phone);
-        employee.setbDay(bDay);
-
+        Employee employee = new Employee(fName,lName,email,address,phone,bDay);
+        insertPerson(employee);
         try {
             DBConnection.startTransaction();
             DBEmployee dbEmployee = new DBEmployee();
@@ -67,32 +60,43 @@ public class PersonControl
             throw new Exception("Employee not inserted");
         }
     }
-	
-	public Person findPerson (int id) {
+    public Person findCustomer(int id) throws Exception {
+	    Person customer;
+        try {
+            DBConnection.startTransaction();
+            IFDBPerson ifdbPerson = new DBPerson();
+            customer  = ifdbPerson.findCustomer(id,false); // again, when true, when false?
+            DBConnection.commitTransaction();
+        } catch (Exception e) {
+            DBConnection.rollbackTransaction();
+            throw new Exception("Customer not found");
+        }
+        return customer;
+    }
+    public Person findSupplier(int id) throws Exception {
+        Person supplier;
+        try {
+            DBConnection.startTransaction();
+            IFDBPerson ifdbPerson = new DBPerson();
+            supplier  = ifdbPerson.findSupplier(id,false); // again, when true, when false?
+            DBConnection.commitTransaction();
+        } catch (Exception e) {
+            DBConnection.rollbackTransaction();
+            throw new Exception("Supplier not found");
+        }
+        return supplier;
+    }
+
+	public int deletePerson (int id) {
         IFDBPerson ifdbPerson = new DBPerson();
-        return ifdbPerson.findPerson(id,true);
-    }
-	
-	public boolean DeleteCustomer (int id) {
-        IFDBCustomer ifdbCustomer = new DBCustomer();
-        return ifdbCustomer.delete(id);
+        return ifdbPerson.delete(id);
     }
 
-    public boolean DeleteSupplier (int id) {
-        IFDBSupplier ifdbSupplier = new DBSupplier();
-        return ifdbSupplier.delete(id);
-    }
-
-    public boolean DeleteEmployee (int id) {
-        IFDBEmployee ifdbEmployee = new DBEmployee();
-        return ifdbEmployee.delete(id);
-    }
-	
 	public ArrayList<Person> findAllPersons()
     {
-        IFDBPerson dbPerson = new DBPerson();
+        IFDBPerson ifdbPerson = new DBPerson();
         ArrayList<Person> persons = new ArrayList<Person>();
-        persons = dbPerson.getAllPersons(false);
+        persons = ifdbPerson.getAllPersons(false);
         return persons;
     }
 	

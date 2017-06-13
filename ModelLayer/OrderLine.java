@@ -1,6 +1,5 @@
 package ModelLayer;
 
-import java.util.ArrayList;
 
 public class OrderLine {
 	private static int orderLineCount = 0 ;

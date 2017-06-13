@@ -12,4 +12,5 @@ public interface IFDBPerson {
     public Person findSupplier(int id, boolean retriveAssociation);
     public Person findCustomer(int id, boolean retriveAssociation);
     public int insertPerson(Person person) throws Exception;
+    public int delete(int id);
 }

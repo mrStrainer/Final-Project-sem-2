@@ -1,12 +1,10 @@
 package ModelLayer;
 
-public class Item {
+public class Item  extends Sale{
 	private int price, salePrice, stock, id;
 	private String name, brand, description;
 	private static int count = 0;
-
-	public Item() {
-	}
+	public Item() {}
 
 	public Item(String name, int price, int salePrice, int stock, String brand, String description) {
 		this.name = name;

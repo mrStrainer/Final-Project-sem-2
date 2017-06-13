@@ -15,7 +15,7 @@ public class DBCustomer implements IFDBCustomer
 	{  
 		int rc = -1;
 		String query="INSERT INTO Customer(cId) VALUES('"+
-				customer.getcId()  +"'";
+				customer.getId()  +"'";
 		
 		System.out.println("insert : " + query);
 		try

@@ -6,6 +6,13 @@ package ModelLayer;
 public class Sale  extends OrderLine{
     private Item item;
 
+    public Sale() {
+    }
+
+    public Sale(Item item) {
+        this.item = item;
+    }
+
     public Sale(Item item, int amount) {
         super(item.getPrice(),amount);
         this.item = item;

@@ -1,10 +1,15 @@
 package DBLayer;
 
-import ModelLayer.Supplier;
+import ModelLayer.Service;
+
+import java.util.ArrayList;
 
 /**
  * Created by atee on 2017.06.02..
  */
 public interface IFDBService {
-    public int insertSupplier(Supplier supplier) throws Exception;
+    public ArrayList<Service> getAllServices(boolean retriveAssociation);
+    public Service findService(int id, boolean retriveAssociation);
+    public int insertService(Service service) throws Exception;
+    public int delete(int id);
 }

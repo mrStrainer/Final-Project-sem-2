@@ -34,12 +34,6 @@ public class DBPhone implements IFDBPhone
 		}
 		return(rc);
 	}
-	
-	public int getPhoneID()
-	{
-		int i;
-		
-		return i;
-	}
+
 	
 }

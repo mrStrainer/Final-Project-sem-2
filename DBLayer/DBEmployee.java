@@ -15,7 +15,7 @@ public class DBEmployee implements IFDBEmployee
 	{  
 		int rc = -1;
 		String query="INSERT INTO Employee(eId) VALUES('"+
-				employee.geteId()  +"'";
+				employee.getId()  +"'";
 		
 		System.out.println("insert : " + query);
 		try

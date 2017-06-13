@@ -15,7 +15,7 @@ public class DBSupplier implements IFDBSupplier
 	{  
 		int rc = -1;
 		String query="INSERT INTO Supplier(sId) VALUES('"+
-				supplier.getsId()  +"'";
+				supplier.getId()  +"'";
 		
 		System.out.println("insert : " + query);
 		try

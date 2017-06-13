@@ -3,7 +3,7 @@ import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBPhotoAlbum implements IFDBPerson
+public class DBPhotoAlbum implements IFDBPhotoAlbum
 {
 	private Connection con;
 	
@@ -29,9 +29,10 @@ public class DBPhotoAlbum implements IFDBPerson
 		String query="INSERT INTO PhotoAlbum(size, pAmount, pType, cType, phId)  VALUES('"+
 				pa.getSize()  + "','"  +
 				pa.getPicAmount()  + "','"  +
-				pa.getPType()  + "','"  +
-				pa.getCType()  + "','"  +
+				pa.getpType()  + "','"  +
+				pa.getcType()  + "','"  +
 				pa.getId() +"'";
+
 
 
 		System.out.println("insert : " + query);
