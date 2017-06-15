@@ -11,9 +11,33 @@ public class Restock extends OrderLine {
     public Restock(){}
 
     public Restock(Item item, Supplier supplier, int amount, String date) {
-        super(item.getPrice(), amount);
+        super(item.getPrice(), amount,3);
         this.date = date;
         this.item = item;
+        this.supplier = supplier;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
     }
 }

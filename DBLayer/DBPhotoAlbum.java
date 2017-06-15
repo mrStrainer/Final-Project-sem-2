@@ -2,6 +2,7 @@ package DBLayer;
 import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
+	//inserting a  photo album should insert: size, amount type, ctype, orderlineid
 
 public class DBPhotoAlbum implements IFDBPhotoAlbum
 {

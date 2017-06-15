@@ -7,7 +7,7 @@ public class Service extends OrderLine{
 	private String startDate;
 
 	public Service(int price, String description, boolean status, String location, String startDate) {
-		super(price,1);
+		super(price,1,1);
 		this.description = description;
 		this.status = status;
 		this.location = location;
@@ -30,4 +30,19 @@ public class Service extends OrderLine{
 		this.status = status;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
 }

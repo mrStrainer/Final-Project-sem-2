@@ -14,7 +14,7 @@ public class Sale  extends OrderLine{
     }
 
     public Sale(Item item, int amount) {
-        super(item.getPrice(),amount);
+        super(item.getPrice(),amount, 0);
         this.item = item;
     }
 

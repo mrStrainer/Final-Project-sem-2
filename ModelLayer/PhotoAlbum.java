@@ -8,7 +8,7 @@ public class PhotoAlbum extends OrderLine {
 
 	public PhotoAlbum(int picAmount, int price, String size, String paperType, String coverType)
 	{
-		super(price,1);
+		super(price,1,2);
 		this.picAmount = picAmount;
 		this.price = price;
 		this.size = size;

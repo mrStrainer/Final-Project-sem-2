@@ -2,7 +2,9 @@ package DBLayer;
 import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
-
+	//orderline insertion should insert
+	// type: int  0-3
+	// oderId, orderline id, amount , price
 public class DBOrderLine implements IFDBOrderLine
 {
 	private Connection con;
@@ -22,8 +24,14 @@ public class DBOrderLine implements IFDBOrderLine
 		String wClause = "  id = '" + id + "'";
 		return singleWhere(wClause, retriveAssociation);
 	}
+	//
+	// should insert orderId aswell, so that there is a connection
+	// also should insert what type of sale was it, type 0: Sale
+	//												type 1: Service
+	//												type 2:	PhotoAlbum
+	//												type 3:	Restock
 
-	public int insertOrderLine(OrderLine ol) throws Exception
+	public int insertOrderLine(OrderLine ol, int orderId) throws Exception
 	{  
 		int rc = -1;
 		String query="INSERT INTO OrderLine(price, amount, olId)  VALUES('"+

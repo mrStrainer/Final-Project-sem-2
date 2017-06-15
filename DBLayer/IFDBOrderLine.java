@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 public interface IFDBOrderLine {
     public ArrayList<OrderLine> getAllOrderLines(boolean retriveAssociation);
-    public int insertOrderLine(OrderLine ol) throws Exception;
+    public int insertOrderLine(OrderLine ol, int orderId) throws Exception;
     public int delete(int id);
 }

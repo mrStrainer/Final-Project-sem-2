@@ -6,14 +6,15 @@ public class OrderLine {
 	private int orderLineId;
 	private int price;
 	private int amount;
+	private int type;
 
 	public OrderLine() {
 	}
 
-	public OrderLine(int price, int amount) {
+	public OrderLine(int price, int amount, int type) {
 		this.amount = amount;
 		this.price = price;
-
+		this.type = type;
 		orderLineCount++;
 		this.orderLineId = orderLineCount;
 	}
@@ -50,5 +51,11 @@ public class OrderLine {
 	}
 
 
+	public int getType() {
+		return type;
+	}
 
+	public void setType(int type) {
+		this.type = type;
+	}
 }

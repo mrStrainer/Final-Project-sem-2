@@ -2,6 +2,8 @@ package DBLayer;
 import ModelLayer.*;
 import java.sql.*;
 import java.util.ArrayList;
+	// inserting a service should insert
+	// start date, location, status, orderlineid
 
 public class DBService implements IFDBService
 {
@@ -43,7 +45,7 @@ public class DBService implements IFDBService
 		}
 		catch(SQLException ex){
 			System.out.println("Service not Created");
-			throw new Exception ("Service is not inserted correct");
+			throw new Exception ("Service is not inserted correctly");
 		}
 		return(rc);
 	}
