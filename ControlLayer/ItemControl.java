@@ -114,6 +114,7 @@ public class ItemControl
         }
         return item;
     }
+    
     public int deleteItem(int id) {
         IFDBItem ifdbItem = new DBItem();
         return ifdbItem.delete(id);

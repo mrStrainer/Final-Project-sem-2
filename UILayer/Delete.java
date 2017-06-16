@@ -119,8 +119,16 @@ public class Delete extends JFrame
 			public void actionPerformed(ActionEvent e) {
 				String id1 = textField.getText();
 				int id = Integer.parseInt(id1);
-				PersonControl personControl = new PersonControl();
-				personControl.deletePerson();
+				if(id < 2000 && id > 999)
+				{
+					PersonControl pc = new PersonControl();
+					pc.deletePerson(id);
+				}
+				else
+				{
+					ItemControl ic = new ItemControl();
+					ic.deleteItem(id);
+				}
 				dispose();
 				Main.main(null);
 			}
