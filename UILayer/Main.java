@@ -13,7 +13,6 @@ public class Main
 	private JButton btnDelete;
 	private JButton btnNewOrder;
 	private JButton btnUpcomingJobs;
-	private JButton btnRestock;
 	
 	public static void main(String[] args) 
 	{
@@ -53,7 +52,7 @@ public class Main
 				create.main(null);
 			}
 		});
-		btnCreate.setBounds(600, 30, 300, 100);
+		btnCreate.setBounds(600, 50, 300, 100);
 		frame.getContentPane().add(btnCreate);
 		
 		btnDelete = new JButton("DELETE");
@@ -65,7 +64,7 @@ public class Main
 				delete.main(null);
 			}
 		});
-		btnDelete.setBounds(600, 180, 300, 100);
+		btnDelete.setBounds(600, 200, 300, 100);
 		frame.getContentPane().add(btnDelete);
 
 		btnNewOrder = new JButton("NEW ORDER");
@@ -77,7 +76,7 @@ public class Main
 				oUI.main(null);
 			}
 		});
-		btnNewOrder.setBounds(600, 330, 300, 100);
+		btnNewOrder.setBounds(600, 350, 300, 100);
 		frame.getContentPane().add(btnNewOrder);
 		
 		btnUpcomingJobs = new JButton("UPCOMING JOBS");
@@ -89,20 +88,8 @@ public class Main
 				calendarUI.main(null);
 			}
 		});
-		btnUpcomingJobs.setBounds(600, 630, 300, 100);
+		btnUpcomingJobs.setBounds(600, 500, 300, 100);
 		frame.getContentPane().add(btnUpcomingJobs);
-		
-		btnRestock = new JButton("RESTOCK");
-		btnRestock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Restock restock = new Restock();
-				frame.dispose();
-				Restock.main(null);
-			}
-		});
-		btnRestock.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnRestock.setBounds(600, 480, 300, 100);
-		frame.getContentPane().add(btnRestock);
 		
 	}
 }
