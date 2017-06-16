@@ -1,28 +1,60 @@
 package ModelLayer;
 
-/**
- * Created by atee on 2017.06.06..
- */
 public class Sale  extends OrderLine{
     private Item item;
+    private Order order;
+    private int amount, price saleId;
 
-    public Sale() {
+    public Sale(){}
+
+    public Sale(Item item, Order order, int amount, saleId) 
+    {
+        this.item = item;
+        this.order = order;
+        this.amount = amount;
+        this.saleId = saleId;
+        setPrice();
     }
-
-    public Sale(Item item) {
+    
+    public void setItem(Item item) 
+    {
         this.item = item;
     }
-
-    public Sale(Item item, int amount) {
-        super(item.getPrice(),amount, 0);
-        this.item = item;
+    public void setOrder(Order order)
+    {
+    	this.order = order;
     }
-
-    public Item getItem() {
-        return item;
+    public void setamount(int amount)
+    {
+    	this.amount = amount;
     }
-
-    public void setItem(Item item) {
-        this.item = item;
+    public void setPrice()
+    {
+    	price = (item.getPrice()*amount);
+    }
+    public void setId(int saleId)
+    {
+    	this.saleId = saleId;
+    }
+    
+    public Order getOrder()
+    {
+    	return order;
+    }
+    public Item getItem()
+    {
+    	return item;
+    }
+    public int getAmount()
+    {
+    	return amount;
+    }
+    public int getPrice()
+    {
+    	return price;
+    }
+    public int getId()
+    {
+    	return saleId;
     }
 }
