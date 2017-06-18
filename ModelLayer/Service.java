@@ -8,10 +8,10 @@ public class Service extends OrderLine{
 
 	public Service(){}
 	
-	public Service(int price, String description, boolean status, String location, String startDate) {
+	public Service(int price, String description,String location, String startDate) {
 		super(price,1,1);
 		this.description = description;
-		this.status = status;
+		this.status = false;
 		this.location = location;
 		this.startDate = startDate;
 	}
@@ -20,8 +20,12 @@ public class Service extends OrderLine{
 		this.description = description;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setStatusTrue() {
+		this.status = true;
+	}
+	
+	public void setStatusFalse() {
+		this.status = false;
 	}
 
 	public void setLocation(String location) {

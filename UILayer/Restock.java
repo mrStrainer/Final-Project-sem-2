@@ -1,10 +1,13 @@
 package UILayer;
-
+import ModelLayer.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import ControlLayer.*;
+import ModelLayer.Item;
+import ModelLayer.Supplier;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -151,8 +154,17 @@ public class Restock extends JFrame
 				String date = textField_2.getText();
 				String amount1 = textField_3.getText();
 				int amount = Integer.parseInt(amount1);
-				SupplyContorl sc = new SupplyControl();
-				sc.Restock(sId, pId, date, amount);
+				
+				ItemControl ic = new ItemControl();
+				Item i = ic.findItem(pId);
+				
+				PersonControl pc = new PersonControl();
+				Supplier s = (Supplier) pc.findSupplier(sId);
+				
+				Restock restock = new Restock(i, s, amount, date);
+				OrderControl oc = new OrderControl();
+				oc.insertRestock(restock);
+				
 				dispose();
 				OrderUI.main(null);
 			}

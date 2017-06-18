@@ -1,5 +1,5 @@
 package UILayer;
-
+import ModelLayer.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -103,8 +103,16 @@ public class Sale extends JFrame
 			public void actionPerformed(ActionEvent e) {
 				String amount1 = textField.getText();
 				int amount = Integer.parseInt(amount1);
+				String id1 = txtItemId.getText();
+				int id = Integer.parseInt(id1);
+				ItemControl ic = new ItemControl();
+				Item i = ic.findItem(id);
+				
+				Sale sale = new Sale(i, amount);
+				
 				OrderControl oc = new OrderControl();
-				oc.insertSale(amount);
+				oc.insertSale(sale);
+				
 				dispose();
 				OrderUI.main(null);
 			}

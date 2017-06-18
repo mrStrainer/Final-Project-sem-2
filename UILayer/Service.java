@@ -12,6 +12,7 @@ public class Service extends JFrame
 {
 	private JPanel contentPane;
 	private JButton btnCancel;
+	private JButton btnAddToCart;
 	private JTextField txtStartdate;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -97,7 +98,7 @@ public class Service extends JFrame
 		lblStartingDate.setBounds(100, 100, 100, 20);
 		contentPane.add(lblStartingDate);
 		
-		JButton btnAddToCart = new JButton("ADD TO CART");
+		btnAddToCart = new JButton("ADD TO CART");
 		btnAddToCart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String startDate = txtStartdate.getText();
