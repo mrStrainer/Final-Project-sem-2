@@ -64,6 +64,11 @@ public class Create extends JFrame
 		});
 	}
 	
+	public Create()
+	{
+		Initialize();
+	}
+	
 	public void Initialize()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
